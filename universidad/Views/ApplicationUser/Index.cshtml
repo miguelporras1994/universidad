@@ -6,9 +6,7 @@
 
 <h2>Index</h2>
 
-<p>
-    <a asp-action="Crear">Crear</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -39,9 +37,9 @@
                     @Html.DisplayFor(modelItem => item.PhoneNumber)
                 </td>
                 <td>
-                    <a asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
-                    <a asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+                    <a class="btn btn-success" asp-action="Editar" asp-route-id="@item.Id">Editar</a> |
+                    <a class="btn btn-info"  asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
+                    <a  class="btn btn-danger"asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
                 </td>
             </tr>
         }

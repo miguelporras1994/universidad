@@ -20,14 +20,13 @@ namespace universidad.Controllers
         }
         public ActionResult Index()
         {
-           
+
 
 
 
             return View(Db.ApplicationUser.ToList());
         }
 
-        
 
 
 
@@ -35,14 +34,15 @@ namespace universidad.Controllers
 
 
 
-        public ActionResult Editar(string   id)
+
+        public ActionResult Editar(string id)
         {
 
             try
             {
 
 
-        
+
                 {
 
 
@@ -56,7 +56,7 @@ namespace universidad.Controllers
             }
             catch (Exception ex)
             {
-               // ModelState.AddModelError("NO SE PUDO EDITAR VOY LLOARAR", ex);
+                // ModelState.AddModelError("NO SE PUDO EDITAR VOY LLOARAR", ex);
                 return View();
 
             }
@@ -71,18 +71,18 @@ namespace universidad.Controllers
             try
             {
 
-            
+
                 {
 
 
 
 
-                   ApplicationUser va = Db.ApplicationUser.Find(c.Id);
+                    ApplicationUser va = Db.ApplicationUser.Find(c.Id);
 
-                    // va.Nombre = c.Nombre;
-                    // va.Apellido = c.Apellido;
-                    // va.Correo = c.Correo;
-                    // va.Dirrecion = c.Dirrecion;
+                   
+                    va.UserName = c.UserName;
+                    va.PhoneNumber = c.PhoneNumber;
+                     va.PasswordHash = c.PasswordHash;
                     //va.Telefono = c.Telefono;
 
                     Db.SaveChanges();
@@ -93,7 +93,7 @@ namespace universidad.Controllers
             }
             catch (Exception ex)
             {
-               /// ModelState.AddModelError("hay un error con los con el regsitro", ex);
+                /// ModelState.AddModelError("hay un error con los con el regsitro", ex);
 
                 return View();
             }
@@ -117,15 +117,15 @@ namespace universidad.Controllers
                 ApplicationUser val = Db.ApplicationUser.Where(a => a.Id == id).FirstOrDefault();
 
 
-                    //Tercero val = db.Tercero.Find(id);
-                    return View(val);
+                //Tercero val = db.Tercero.Find(id);
+                return View(val);
 
-                
+
 
             }
             catch (Exception ex)
             {
-               // ModelState.AddModelError("NO SE PUDO EDITAR VOY LLOARAR", ex);
+                // ModelState.AddModelError("NO SE PUDO EDITAR VOY LLOARAR", ex);
                 return View();
 
             }
@@ -138,15 +138,15 @@ namespace universidad.Controllers
 
 
         {
-      
-                if (ModelState.IsValid)
-                {
-                    ApplicationUser eli = Db.ApplicationUser.Where(a => a.Id== id).FirstOrDefault();
+
+            if (ModelState.IsValid)
+            {
+                ApplicationUser eli = Db.ApplicationUser.Where(a => a.Id == id).FirstOrDefault();
                 Db.ApplicationUser.Remove(eli);
                 Db.SaveChanges();
-                    return RedirectToAction("Index");
+                return RedirectToAction("Index");
 
-                }
+            }
             return RedirectToAction("Index");
         }
         [HttpGet]
@@ -156,39 +156,6 @@ namespace universidad.Controllers
             return View();
 
         }
-        [HttpPost]
-        public ActionResult Crear(ApplicationUser Ter)
-        {
-            if (ModelState.IsValid)
-            {
-
-
-              
-                {
-
-                    var validar = Db.ApplicationUser.Count(a => a.Id == Ter.Id);
-                    if (validar == 0)
-                    {
-
-                        Db.ApplicationUser.Add(Ter);
-                        Db.SaveChanges();
-                        return RedirectToAction("Index");
-
-
-                    }
-                    else
-                    {
-                        ViewBag.Mensaje = "el  ya hay una personas  creada con este numero de cedula ";
-                        return View();
-
-                    }
-
-
-                }
-
-            }
-            return View();
-        }
     }
-
 }
+    
