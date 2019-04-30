@@ -36,3 +36,15 @@ D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfo.cs
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.dll
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.pdb
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.deps.json
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.runtimeconfig.json
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.runtimeconfig.dev.json
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.dll
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.pdb
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.csprojAssemblyReference.cache
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfoInputs.cache
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfo.cs
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.dll
+C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.pdb
