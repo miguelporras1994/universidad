@@ -37,6 +37,19 @@ var phoneNumber
 function editarusuario(action) {
     id = $('input[name=Id]')[0].value;
     userName = $('input[name=UserName]')[0].value;
-    email = $('input[name=Email]')[0].value;
     phoneNumber = $('input[name=PhoneNumber]')[0].value;
+
+
+$.ajax({
+    type:"POST",
+    url: action,
+    data: { id, userName, phoneNumber },
+    success: function (response) {
+        console.log(response)
+    }
+
+
+
+    })
+
 }
