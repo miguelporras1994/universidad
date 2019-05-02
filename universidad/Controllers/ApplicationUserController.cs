@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using universidad.Data;
 using universidad.Models;
 
@@ -28,14 +29,21 @@ namespace universidad.Controllers
         }
 
 
+        public async Task<List<ApplicationUser>> Usuario(string id)
+        {
+            List<ApplicationUser> lista = new List<ApplicationUser>();
+            var Obtener = await Db.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);
+            lista.Add(Obtener);
+
+            return lista;
+        }
 
 
 
 
 
 
-
-        public ActionResult Editar(string id)
+        /*public ActionResult Editar(string id)
         {
 
             try
@@ -62,7 +70,7 @@ namespace universidad.Controllers
             }
 
 
-        }
+        }*/
 
         [HttpPost]
         public ActionResult Editar(ApplicationUser c)
@@ -82,8 +90,8 @@ namespace universidad.Controllers
                    
                     va.UserName = c.UserName;
                     va.PhoneNumber = c.PhoneNumber;
-                     va.PasswordHash = c.PasswordHash;
-                    //va.Telefono = c.Telefono;
+                     
+                    
 
                     Db.SaveChanges();
                     return RedirectToAction("Index");
