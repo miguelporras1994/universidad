@@ -45,10 +45,13 @@ $.ajax({
     url: action,
     data: { id, userName, phoneNumber },
     success: function (response) {
-        console.log(response)
+        if (response == "Save") {
+            window.location.href = "ApplicationUser/Index"
+        } else {
+            alert("no dejo Editar ");
+        }
     }
-
-
+     
 
     })
 

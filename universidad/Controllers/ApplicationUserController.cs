@@ -94,19 +94,19 @@ namespace universidad.Controllers
                     
 
                     Db.SaveChanges();
-                    return RedirectToAction("Index");
+                    var Resp = "save";
 
+                  
 
                 }
             }
-            catch (Exception ex)
+            catch 
             {
                 /// ModelState.AddModelError("hay un error con los con el regsitro", ex);
-
-                return View();
+                var Resp = "no_save";
             }
 
-
+            return Resp;
         }
 
 
