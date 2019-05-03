@@ -29,7 +29,7 @@ namespace universidad.Controllers
         }
 
 
-        public async Task<List<ApplicationUser>> Usuario(string id)
+        public async Task<List<ApplicationUser>>Usuario(string id)
         {
             List<ApplicationUser> lista = new List<ApplicationUser>();
             var Obtener = await Db.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);
@@ -73,14 +73,14 @@ namespace universidad.Controllers
         }*/
 
         [HttpPost]
-        public ActionResult Editar(ApplicationUser c)
+        public  string Editar(ApplicationUser c)
         {
+            var Resp = "";
 
             try
             {
 
 
-                {
 
 
 
@@ -94,19 +94,19 @@ namespace universidad.Controllers
                     
 
                     Db.SaveChanges();
-                    var Resp = "save";
+                    Resp = "Save";
 
-                  
+                    return Resp;
 
-                }
+             
             }
             catch 
             {
                 /// ModelState.AddModelError("hay un error con los con el regsitro", ex);
-                var Resp = "no_save";
+                 Resp = "no_save";
+                return Resp;
             }
 
-            return Resp;
         }
 
 
@@ -131,7 +131,7 @@ namespace universidad.Controllers
 
 
             }
-            catch (Exception ex)
+            catch 
             {
                 // ModelState.AddModelError("NO SE PUDO EDITAR VOY LLOARAR", ex);
                 return View();

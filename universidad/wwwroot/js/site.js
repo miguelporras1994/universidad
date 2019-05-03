@@ -16,14 +16,17 @@ function getUsuario(id, action) {
 
     });
 }
-var id
-var userName
-var email
-var phoneNumber
+var id;
+var userName;
+var email;
+var phoneNumber;
+var index;
+
 
     var items;
     function mostrarUsuario(response) {
         items = response;
+       
         $.each(items, function (index, val) {
             $('input[name=Id]').val(val.id);
             $('input[name=UserName]').val(val.userName);
@@ -46,7 +49,7 @@ $.ajax({
     data: { id, userName, phoneNumber },
     success: function (response) {
         if (response == "Save") {
-            window.location.href = "ApplicationUser/Index"
+            window.location.href = "ApplicationUser"
         } else {
             alert("no dejo Editar ");
         }
