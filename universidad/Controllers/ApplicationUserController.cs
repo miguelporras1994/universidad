@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using universidad.Data;
 using universidad.Models;
@@ -14,10 +16,20 @@ namespace universidad.Controllers
     {
         // GET: Tercero
         private readonly ApplicationDbContext Db;
+        UserManager<ApplicationUser> _userManager;
+        UsuarioRole _usuarioRole;
+        RoleManager<IdentityRole> _roleManager;
 
-        public ApplicationUserController(ApplicationDbContext context)
+        public List<SelectListItem> UsuarioRole;
+
+        public ApplicationUserController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,  List<SelectListItem> Role)
         {
             Db = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
+
+
         }
         public ActionResult Index()
         {
