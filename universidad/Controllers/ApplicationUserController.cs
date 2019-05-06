@@ -23,7 +23,7 @@ namespace universidad.Controllers
         public List<SelectListItem> UsuarioRole;
 
         public ApplicationUserController(
-            ApplicationDbContext context, 
+            ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager
           )
@@ -58,25 +58,63 @@ namespace universidad.Controllers
                     UserName = data.UserName,
                     PhoneNumber = data.PhoneNumber,
                     Email = data.Email,
-                    Role = UsuarioRole[0].Text
+                    Role = UsuarioRole[0].Text,
+
                 });
 
 
 
-               
+
             }
             return View(usuario.ToList());
         }
 
 
-        public async Task<List<ApplicationUser>>Usuario(string id)
+        public async Task<List<Usuarios>> EnvioUsuario(string id)
         {
-            List<ApplicationUser> lista = new List<ApplicationUser>();
-            var Obtener = await Db.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);
-            lista.Add(Obtener);
+            /* List<ApplicationUser> lista = new List<ApplicationUser>();
+             var Obtener = await Db.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);
+             lista.Add(Obtener);
 
-            return lista;
+             return lista;*/
+
+            List<Usuarios> lista = new List<Usuarios>();
+            var Obtener = await Db.ApplicationUser.SingleOrDefaultAsync(m => m.Id == id);
+            UsuarioRole = await _usuarioRole.GetRole(_userManager, _roleManager, id);
+
+            lista.Add(new Usuarios()
+            {
+                Id = Obtener.Id,
+                Email = Obtener.Email,
+                UserName = Obtener.UserName,
+                PhoneNumber = Obtener.PhoneNumber,
+                Role = UsuarioRole[0].Text,
+                Roleid = UsuarioRole[0].Value
+
+
+
+            });
+        
+
+                return lista;
+
+
+
         }
+
+
+
+
+        public List<SelectListItem> GetRoles()
+        {
+            //Creamos un objeto llamado rolesLista
+            List<SelectListItem> rolesLista = new List<SelectListItem>();
+            rolesLista =  _usuarioRole.Roles(_roleManager);
+            return rolesLista;
+        }
+
+
+
 
 
 

@@ -17,7 +17,7 @@ namespace universidad.Models
         }
 
 
-        public async Task<List<SelectListItem>>GetRole(UserManager<ApplicationUser> userManager,RoleManager<IdentityRole>roleManager,string Id) {
+        public async Task<List<SelectListItem>> GetRole(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, string Id) {
 
 
 
@@ -26,35 +26,51 @@ namespace universidad.Models
             var usuario = await userManager.FindByIdAsync(Id);
             var roles = await userManager.GetRolesAsync(usuario);
             // vamos comprobar si esta funcionando
-            if(roles.Count == 0)
+            if (roles.Count == 0)
             {
                 usuarioRoles.Add(new SelectListItem()
                 {
                     Value = "null",
-                    Text ="no Role"
+                    Text = "no Role"
                 });
 
 
             } else
 
-           {
+            {
                 rol = Convert.ToString(roles[0]);
                 var rolesId = roleManager.Roles.Where(m => m.Name == rol);
 
-                foreach (var Data in rolesId){
+                foreach (var Data in rolesId) {
 
 
                     usuarioRoles.Add(new SelectListItem()
-                    {   Value =Data.Id,
+                    { Value = Data.Id,
                         Text = Data.Name,
-                });
+                    });
                 }
 
-           
+
             }
             return usuarioRoles;
 
 
         }
+
+
+
+        public List<SelectListItem> Roles(RoleManager<IdentityRole> roleManager)
+        {
+            var roles = roleManager.Roles.ToList();
+            foreach (var Data in roles)
+            {
+                usuarioRoles.Add(new SelectListItem()
+                {
+                    Value = Data.Id,
+                    Text = Data.Name
+                });
+            }
+            return usuarioRoles;
+        }
     }
-}
+    }

@@ -41,7 +41,7 @@
             </td>
 
             <td>
-                <a class="btn btn-success" data-toggle="modal" data-target="#ModalEditar" onclick="getUsuario('@item.Id','ApplicationUser/Usuario')">Editar</a> |
+                <a class="btn btn-success" data-toggle="modal" data-target="#ModalEditar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')">Editar</a> |
                 <a class="btn btn-info" asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
                 <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
             </td>
@@ -83,9 +83,17 @@
 
 
                     <div class="form-group">
-                        <label for="Role" class="control-label">Rol</label>
-                        <input name="Role" id="Role" class="form-control" />
+                        <label for="Roles" class="control-label">Rol</label>
+                        <select id="Select" class="form-control"
+                                onclick="getRoles('ApplicationUser/GetRoles');">
+                            <option value="0">Selecionar EL Rol</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Usuario</option>
+                            <option value="3">Estudiante</option>
+                        </select>
 
+                        
+                        
                     </div>
 
 
