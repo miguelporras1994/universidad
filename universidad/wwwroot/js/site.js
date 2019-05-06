@@ -32,6 +32,7 @@ var index;
             $('input[name=UserName]').val(val.userName);
             $('input[name=Email]').val(val.email);
             $('input[name=PhoneNumber]').val(val.phoneNumber);
+            $('input[name=Role]').val(val.Role);
 
 
         });

@@ -22,22 +22,50 @@ namespace universidad.Controllers
 
         public List<SelectListItem> UsuarioRole;
 
-        public ApplicationUserController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-            RoleManager<IdentityRole> roleManager,  List<SelectListItem> Role)
+        public ApplicationUserController(
+            ApplicationDbContext context, 
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager
+          )
         {
             Db = context;
             _userManager = userManager;
             _roleManager = roleManager;
+            _usuarioRole = new UsuarioRole();
+            UsuarioRole = new List<SelectListItem>();
+
+
+
 
 
         }
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            var Id = "";
+
+            List<Usuarios> usuario = new List<Usuarios>();
+
+            var agrupar = await Db.ApplicationUser.ToListAsync();
+
+            foreach (var data in agrupar)
+            {
+                Id = data.Id;
+                UsuarioRole = await _usuarioRole.GetRole(_userManager, _roleManager, Id);
+
+                usuario.Add(new Usuarios()
+                {
+                    Id = data.Id,
+                    UserName = data.UserName,
+                    PhoneNumber = data.PhoneNumber,
+                    Email = data.Email,
+                    Role = UsuarioRole[0].Text
+                });
 
 
 
-
-            return View(Db.ApplicationUser.ToList());
+               
+            }
+            return View(usuario.ToList());
         }
 
 
@@ -85,7 +113,7 @@ namespace universidad.Controllers
         }*/
 
         [HttpPost]
-        public  string Editar(ApplicationUser c)
+        public  string Editar(Usuarios c)
         {
             var Resp = "";
 
@@ -97,11 +125,13 @@ namespace universidad.Controllers
 
 
 
-                    ApplicationUser va = Db.ApplicationUser.Find(c.Id);
+                ApplicationUser va = Db.ApplicationUser.Find(c.Id);
 
                    
                     va.UserName = c.UserName;
                     va.PhoneNumber = c.PhoneNumber;
+                 
+                  
                      
                     
 
