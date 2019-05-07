@@ -107,7 +107,7 @@ namespace universidad.Controllers
 
         public List<SelectListItem> GetRoles()
         {
-            //Creamos un objeto llamado rolesLista
+            //Creamos un objeto llamado rolesLista  
             List<SelectListItem> rolesLista = new List<SelectListItem>();
             rolesLista =  _usuarioRole.Roles(_roleManager);
             return rolesLista;

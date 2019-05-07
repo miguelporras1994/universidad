@@ -29,7 +29,7 @@ var index;
         items = response;
         for (var i = 0; i < 3; i++) {
             var x = document.getElementById('select');
-            X.romove(i);
+            X.remove(i);
         }
 
        
@@ -43,7 +43,7 @@ var index;
 
         });
 }
-
+/*
 function getRoles(Action) {
     $.ajax({
         type: "POST",
@@ -61,7 +61,7 @@ function getRoles(Action) {
     });
 
     }
-           
+           */
 
 function editarusuario(action) {
     id = $('input[name=Id]')[0].value;
