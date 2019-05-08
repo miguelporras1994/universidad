@@ -102,24 +102,13 @@ namespace universidad.Controllers
 
         }
 
-
-
-
-        public List<SelectListItem> GetRoles()
+        public List<SelectListItem>GetRoles()
         {
             //Creamos un objeto llamado rolesLista  
             List<SelectListItem> rolesLista = new List<SelectListItem>();
             rolesLista =  _usuarioRole.Roles(_roleManager);
             return rolesLista;
         }
-
-
-
-
-
-
-
-
 
         /*public ActionResult Editar(string id)
         {
@@ -159,26 +148,31 @@ namespace universidad.Controllers
             {
 
 
+                List<Usuarios> usuarios = new List<Usuarios>();
 
 
 
+                   var Obtener = Db.ApplicationUser.Find(c.Id);
 
-                ApplicationUser va = Db.ApplicationUser.Find(c.Id);
+                usuarios.Add(new Usuarios(){
+                    Id = Obtener.Id,
+                    Email = Obtener.Email,
+                    UserName = Obtener.UserName,
+                    PhoneNumber = Obtener.PhoneNumber,
+                    Role = UsuarioRole[0].Text,
+                    Roleid = UsuarioRole[0].Value
 
-                   
-                    va.UserName = c.UserName;
-                    va.PhoneNumber = c.PhoneNumber;
-                 
-                  
-                     
-                    
+              
 
-                    Db.SaveChanges();
-                    Resp = "Save";
 
-                    return Resp;
 
-             
+            });
+                Db.SaveChanges();
+                Resp = "Save";
+
+
+                return Resp;
+
             }
             catch 
             {

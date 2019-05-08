@@ -29,7 +29,7 @@ var index;
         items = response;
         for (var i = 0; i < 3; i++) {
             var x = document.getElementById('select');
-            X.remove(i);
+            x.remove(i);
         }
 
        
@@ -43,16 +43,16 @@ var index;
 
         });
 }
-/*
+
 function getRoles(Action) {
     $.ajax({
         type: "POST",
-        url: action,
+        url: Action,
         data: {},
         success: function (response) {
             if (j == 0) {
                 for (var i = 0; i < response.length; i++) {
-                    document.getElementById('select').options.[i] = new Option(response[i].text, response[i].value);
+                    document.getElementById('select').options[i] = new Option(response[i].text, response[i].value);
                 }
                 j = 1;
             }
@@ -61,8 +61,7 @@ function getRoles(Action) {
     });
 
     }
-           */
-
+          
 function editarusuario(action) {
     id = $('input[name=Id]')[0].value;
     userName = $('input[name=UserName]')[0].value;
