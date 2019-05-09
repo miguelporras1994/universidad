@@ -66,12 +66,14 @@ function editarusuario(action) {
     id = $('input[name=Id]')[0].value;
     userName = $('input[name=UserName]')[0].value;
     phoneNumber = $('input[name=PhoneNumber]')[0].value;
+    role = document.getElementById('select');
+    selectRole = role.options[role.selectedIndex].text;
 
 
 $.ajax({
     type:"POST",
     url: action,
-    data: { id, userName, phoneNumber },
+    data: { id, userName, phoneNumber,selectRole },
     success: function (response) {
         if (response == "Save") {
             window.location.href = "ApplicationUser"

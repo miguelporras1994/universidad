@@ -140,7 +140,7 @@ namespace universidad.Controllers
         }*/
 
         [HttpPost]
-        public  string Editar(Usuarios c)
+        public  async  Task<string>Editar(Usuarios c , string selectRole )
         {
             var Resp = "";
 
@@ -148,25 +148,34 @@ namespace universidad.Controllers
             {
 
 
-                List<Usuarios> usuarios = new List<Usuarios>();
 
 
 
                    var Obtener = Db.ApplicationUser.Find(c.Id);
 
-                usuarios.Add(new Usuarios(){
-                    Id = Obtener.Id,
-                    Email = Obtener.Email,
-                    UserName = Obtener.UserName,
-                    PhoneNumber = Obtener.PhoneNumber,
-                    Role = UsuarioRole[0].Text,
-                    Roleid = UsuarioRole[0].Value
+
+                    Obtener.Id = c.Id;
+               
+                Obtener.UserName = c.UserName;
+                Obtener.PhoneNumber = c.PhoneNumber;
+                  
 
               
 
 
 
-            });
+            
+                Db.SaveChanges();
+
+                var usuario = await _userManager.FindByIdAsync(c.Id);
+
+                UsuarioRole = await _usuarioRole.GetRole(_userManager, _roleManager, c.Id);
+
+
+
+
+
+                var Resultado = await _userManager.AddToRoleAsync(usuario, selectRole);
                 Db.SaveChanges();
                 Resp = "Save";
 
@@ -180,6 +189,7 @@ namespace universidad.Controllers
                  Resp = "no_save";
                 return Resp;
             }
+          
 
         }
 
