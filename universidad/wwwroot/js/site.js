@@ -41,6 +41,9 @@ var index;
             document.getElementById('select').options[0] = new Option(val.role, val.roleId);
 
 
+            $('input[name=EliminarId]').val(val.id);
+
+
         });
 }
 
@@ -86,3 +89,30 @@ $.ajax({
     })
 
 }
+
+$('#ModalEliminar').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+function EliminarUsuario(action) {
+
+    var id = $('input[name=EliminarId]')[0].value;
+   $.ajax({
+        type: "POST",
+        url: action,
+        data: { id },
+        success: function (evaluar) {
+            if (evaluar == "borrando") {
+                window.location.href = "ApplicationUser"
+
+            }
+            else {
+                alert("no lo puedes eliminar")
+            }
+
+        }
+
+    });
+
+}
+

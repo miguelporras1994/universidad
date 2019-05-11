@@ -226,20 +226,26 @@ namespace universidad.Controllers
 
         }
 
-        public ActionResult Eliminar(string id)
+        public  string Eliminar(string id)
 
 
         {
-
-            if (ModelState.IsValid)
-            {
+            var Respuesta ="";
+            try { 
+        
                 ApplicationUser eli = Db.ApplicationUser.Where(a => a.Id == id).FirstOrDefault();
                 Db.ApplicationUser.Remove(eli);
                 Db.SaveChanges();
-                return RedirectToAction("Index");
+                    Respuesta ="borrando";
+                        
 
+                
             }
-            return RedirectToAction("Index");
+            catch
+            {
+                Respuesta = "noborrado";
+            }
+            return Respuesta;
         }
         [HttpGet]
         public ActionResult Crear()

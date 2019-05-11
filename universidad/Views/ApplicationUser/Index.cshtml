@@ -42,8 +42,8 @@
 
             <td>
                 <a class="btn btn-success" data-toggle="modal" data-target="#ModalEditar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')">Editar</a> |
-                <a class="btn btn-info" asp-action="Detalles" asp-route-id="@item.Id">Detalles</a> |
-                <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id">Eliminar</a>
+                <a class="btn btn-info" asp-action="Detalles" >Detalles</a> |
+                <a class="btn btn-danger"  data-toggle="modal" data-target="#ModalEliminar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')" >Eliminar</a>
             </td>
         </tr>
         }
@@ -104,6 +104,26 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               <button type="button" class="btn btn-primary" onclick="editarusuario('ApplicationUser/Editar')"  >Guardar datos</button>
             </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="ModalEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <Center><h4 class="modal-title" id="myModalLabel">Eliminar Usuario</h4>
+            </div>
+                       <input type="hidden" name="EliminarId" id="EliminarId" />
+           
+           
+                       <div class="modal-footer">
+                           <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                           <button type="button" class="btn btn-danger" onclick="EliminarUsuario('ApplicationUser/Eliminar')">Si</button></Center>
+                       </div>
         </div>
     </div>
 </div>
