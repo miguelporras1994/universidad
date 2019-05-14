@@ -4,6 +4,8 @@
 <center><h2>Usuarios</h2></center>
 
 
+<a class="btn btn-danger" data-toggle="modal" data-target="#ModalCrear" >Crear</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -26,26 +28,26 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
 
-            <td>
-                <a class="btn btn-success" data-toggle="modal" data-target="#ModalEditar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')">Editar</a> |
-                <a class="btn btn-info" asp-action="Detalles" >Detalles</a> |
-                <a class="btn btn-danger"  data-toggle="modal" data-target="#ModalEliminar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')" >Eliminar</a>
-            </td>
-        </tr>
+                <td>
+                    <a class="btn btn-success" data-toggle="modal" data-target="#ModalEditar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')">Editar</a> |
+                    <a class="btn btn-info" asp-action="Detalles">Detalles</a> |
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminar" onclick="getUsuario('@item.Id','ApplicationUser/EnvioUsuario')">Eliminar</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -58,7 +60,7 @@
                 <h4 class="modal-title" id="myModalLabel">Editar Usuarios</h4>
             </div>
             <div class="modal-body">
-                <form a>
+                <form >
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" name="Id" id="Id" />
 
@@ -87,11 +89,11 @@
                         <select id="select" name="select" class="form-control"
                                 onclick="getRoles('ApplicationUser/GetRoles')">
                             <option value="0">Selecionar EL Rol</option>
-                           
+
                         </select>
 
-                        
-                        
+
+
                     </div>
 
 
@@ -102,7 +104,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary" onclick="editarusuario('ApplicationUser/Editar')"  >Guardar datos</button>
+                <button type="button" class="btn btn-primary" onclick="editarusuario('ApplicationUser/Editar')">Guardar datos</button>
             </div>
         </div>
     </div>
@@ -115,15 +117,90 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <Center><h4 class="modal-title" id="myModalLabel">Eliminar Usuario</h4>
+                <Center><h4 class="modal-title" id="myModalLabel">Eliminar Usuario</h4> </Center>
+</div>
+            <input type="hidden" name="EliminarId" id="EliminarId" />
+
+
+            <div class="modal-footer">
+                <Center>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" onclick="EliminarUsuario('ApplicationUser/Eliminar')">Si</button></Center>
             </div>
-                       <input type="hidden" name="EliminarId" id="EliminarId" />
-           
-           
-                       <div class="modal-footer">
-                           <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                           <button type="button" class="btn btn-danger" onclick="EliminarUsuario('ApplicationUser/Eliminar')">Si</button></Center>
-                       </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="ModalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <Center><h4 class="modal-title" id="myModalLabel">Nuevo Usuario</h4> </Center>
+            </div>
+            <div class="modal-body">
+
+
+
+                <form>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" name="Id" id="Id" />
+
+                    <div class="form-group">
+                        <label for="Emailnuevo" class="control-label">Correo</label>
+                        <input name="Emailnuevo" id="Emailnuevo" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PasswordHash" class="control-label">Clave</label>
+                        <input  name="PasswordHash" id="PasswordHash" class="form-control" />
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PasswordRepi" class="control-label">Repetir Clave</label>
+                        <input name="PasswordRepi" id="PasswordRepi" class="form-control" />
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="PhoneNumbernuevo" class="control-label">Telefono</label>
+                        <input name="PhoneNumbernuevo" id="PhoneNumbernuevo" class="form-control" />
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Roles" class="control-label">Rol</label>
+                        <select id="selectNuevo" name="selectNuevo" class="form-control"
+                                onclick="getRoles('ApplicationUser/GetRoles')">
+                            <option value="0">Selecionar EL Rol</option>
+
+                        </select>
+
+
+
+                    </div>
+
+
+
+
+
+                </form>
+
+            </div>
+                    <div class="modal-footer">
+                        <Center>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                          
+                            <button type="button" class="btn btn-danger" onclick="CrearUsuario('ApplicationUser/Crear')">Guardar Usuario</button>
+                        </Center>
+                    </div>
+                </div>
+            </div>
 </div>

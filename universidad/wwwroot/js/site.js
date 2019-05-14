@@ -56,6 +56,7 @@ function getRoles(Action) {
             if (j == 0) {
                 for (var i = 0; i < response.length; i++) {
                     document.getElementById('select').options[i] = new Option(response[i].text, response[i].value);
+                    document.getElementById('selectNuevo').options[i] = new Option(response[i].text, response[i].value);
                 }
                 j = 1;
             }
@@ -115,4 +116,56 @@ function EliminarUsuario(action) {
     });
 
 }
+$('#ModalCrear').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
 
+
+function CrearUsuario(action) {
+
+    correo = $('input[name=EmailNuevo]')[0].value;
+    clave = $('input[name=PasswordHash]')[0].value;
+
+    repeticionclave= $('input[name=PasswordRepi]')[0].value;
+    telefono = $('input[name=PhoneNumbernuevo]')[0].value;
+    role = Document.getElementById('selectNuevo');
+    SelectRole = role.options[role.selectedIndex].text;
+
+    respuesta = "";
+
+
+
+    //validar que los campos no este vacios 
+
+    if (correo = "") {
+        alert("Ingrese un correo")
+    } else {
+
+        if (clave = "") {
+            alert("ingrse una clave ")
+        }
+        else {
+            $.ajax({
+                type: "Post",
+                url: action,
+                data:{ correo, clave, telefono, SelectRole },
+                success: function (response) {
+                    if (response == "save") {
+                        window.location.href = "ApplicationUser";
+                    } else
+                        alert("no esta guardado")
+
+                }
+
+
+            })
+        }
+    }
+
+
+
+
+
+
+
+}

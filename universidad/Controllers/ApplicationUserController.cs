@@ -248,10 +248,28 @@ namespace universidad.Controllers
             return Respuesta;
         }
         [HttpGet]
-        public ActionResult Crear()
+        public string Crear(string correo, string clave, string telefono, string SelectRole)
+
+
         {
 
-            return View();
+
+            ApplicationUser user = new ApplicationUser();
+                user.UserName = correo;
+            user.Email = correo;
+
+            user.PasswordHash = clave;
+            user.PhoneNumber = telefono;
+
+            Db.ApplicationUser.Add(user);
+            Db.SaveChanges();
+   
+
+            
+
+           
+
+        
 
         }
     }
