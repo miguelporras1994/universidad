@@ -247,19 +247,46 @@ namespace universidad.Controllers
             }
             return Respuesta;
         }
-        
-        public async Task<List<IdentityError>>Crear( string correo ,string clave 
-            ,string telefono ,string  SelectRole)
-           {
 
+        public async Task<String>Crear(string correo, string PasswordHash
+            , string telefono, string SelectRole)
+        {
+          var Resp="";
             ApplicationUser usuario = new ApplicationUser
-           
+            {
 
-            
+                UserName = correo,
+                Email = correo,
+                
+                PhoneNumber = telefono
+        };
 
-           
 
-        
+            var result = await _userManager.CreateAsync(usuario, PasswordHash);
+
+            if(result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(usuario, SelectRole);
+                Resp ="save";
+
+
+            }else
+            {
+                Resp="noSAVE ";
+            }
+
+
+
+
+            return Resp;
+
+
+
+
+
+
+
+
 
         }
     }

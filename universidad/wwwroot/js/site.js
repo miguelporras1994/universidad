@@ -122,9 +122,10 @@ $('#ModalCrear').on('shown.bs.modal', function () {
 
 
 function CrearUsuario(action) {
-
-    correo = $('input[name=Emailnuevo]')[0].value;
-    clave = $('input[name=PasswordHash]')[0].value;
+     
+  
+    PasswordHash = $('input[name=PasswordHash]')[0].value;
+    correo = document.getElementById('email');
 
     repeticionclave= $('input[name=PasswordRepi]')[0].value;
     telefono = $('input[name=PhoneNumbernuevo]')[0].value;
@@ -137,7 +138,7 @@ function CrearUsuario(action) {
 
     //validar que los campos no este vacios 
 
-    if (correo = "") {
+    if (correo ="null") {
         alert("Ingrese un correo")
     } else {
 
@@ -148,7 +149,7 @@ function CrearUsuario(action) {
             $.ajax({
                 type:"POST",
                 url: action,
-                data: { correo, clave, telefono, SelectRole },
+                data: {correo,PasswordHash,telefono,SelectRole},
                 success: function (response) {
                     if (response == "save") {
                         window.location.href = "ApplicationUser";
