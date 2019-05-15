@@ -123,12 +123,12 @@ $('#ModalCrear').on('shown.bs.modal', function () {
 
 function CrearUsuario(action) {
 
-    correo = $('input[name=EmailNuevo]')[0].value;
+    correo = $('input[name=Emailnuevo]')[0].value;
     clave = $('input[name=PasswordHash]')[0].value;
 
     repeticionclave= $('input[name=PasswordRepi]')[0].value;
     telefono = $('input[name=PhoneNumbernuevo]')[0].value;
-    role = Document.getElementById('selectNuevo');
+    role = document.getElementById('selectNuevo');
     SelectRole = role.options[role.selectedIndex].text;
 
     respuesta = "";
@@ -146,9 +146,9 @@ function CrearUsuario(action) {
         }
         else {
             $.ajax({
-                type: "Post",
+                type:"POST",
                 url: action,
-                data:{ correo, clave, telefono, SelectRole },
+                data: { correo, clave, telefono, SelectRole },
                 success: function (response) {
                     if (response == "save") {
                         window.location.href = "ApplicationUser";
@@ -158,7 +158,7 @@ function CrearUsuario(action) {
                 }
 
 
-            })
+            });
         }
     }
 

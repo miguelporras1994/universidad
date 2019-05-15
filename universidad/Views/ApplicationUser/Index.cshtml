@@ -143,9 +143,7 @@
 
 
                 <form>
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" name="Id" id="Id" />
-
+                    
                     <div class="form-group">
                         <label for="Emailnuevo" class="control-label">Correo</label>
                         <input name="Emailnuevo" id="Emailnuevo" class="form-control" />
@@ -176,7 +174,7 @@
 
 
                     <div class="form-group">
-                        <label for="Roles" class="control-label">Rol</label>
+                        <label for="selectNuevo" class="control-label">Rol</label>
                         <select id="selectNuevo" name="selectNuevo" class="form-control"
                                 onclick="getRoles('ApplicationUser/GetRoles')">
                             <option value="0">Selecionar EL Rol</option>

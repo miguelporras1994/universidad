@@ -247,23 +247,13 @@ namespace universidad.Controllers
             }
             return Respuesta;
         }
-        [HttpGet]
-        public string Crear(string correo, string clave, string telefono, string SelectRole)
+        
+        public async Task<List<IdentityError>>Crear( string correo ,string clave 
+            ,string telefono ,string  SelectRole)
+           {
 
-
-        {
-
-
-            ApplicationUser user = new ApplicationUser();
-                user.UserName = correo;
-            user.Email = correo;
-
-            user.PasswordHash = clave;
-            user.PhoneNumber = telefono;
-
-            Db.ApplicationUser.Add(user);
-            Db.SaveChanges();
-   
+            ApplicationUser usuario = new ApplicationUser
+           
 
             
 
