@@ -248,15 +248,15 @@ namespace universidad.Controllers
             return Respuesta;
         }
 
-        public async Task<String>Crear(string correo, string PasswordHash
+        public async Task<String>Crear(string email, string PasswordHash
             , string telefono, string SelectRole)
         {
           var Resp="";
             ApplicationUser usuario = new ApplicationUser
             {
 
-                UserName = correo,
-                Email = correo,
+                UserName = email,
+                Email = email,
                 
                 PhoneNumber = telefono
         };
