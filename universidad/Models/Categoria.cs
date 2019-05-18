@@ -14,6 +14,7 @@ namespace universidad.Models
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public  Boolean Estado { get; set; }
+        public ICollection<Curso> Cursos { get; set; }
 
     }
 }
