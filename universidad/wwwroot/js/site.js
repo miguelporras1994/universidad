@@ -165,9 +165,6 @@ function CrearUsuario(action) {
     }
 
 
-    $('#CrearCatergoria').on('shown.bs.modal', function () {
-        $('#myInput').focus()
-    })
 
 
 

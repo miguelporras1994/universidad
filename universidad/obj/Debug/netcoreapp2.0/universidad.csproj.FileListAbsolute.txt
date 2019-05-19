@@ -48,15 +48,3 @@ C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debu
 C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfo.cs
 C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.dll
 C:\Users\Administrador\Desktop\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.pdb
-M:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.deps.json
-M:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.runtimeconfig.json
-M:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.runtimeconfig.dev.json
-M:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.dll
-M:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.pdb
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.csprojAssemblyReference.cache
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.csproj.CoreCompileInputs.cache
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfoInputs.cache
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfo.cs
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.dll
-M:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.pdb
