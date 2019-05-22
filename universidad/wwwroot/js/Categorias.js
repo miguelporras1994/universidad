@@ -1,7 +1,7 @@
 ﻿class Categorias {
-    constructor(Id, nombre, descripcion, estado, action) {
+    constructor(id, nombre, descripcion, estado, action) {
 
-        this.id = Id;
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.estado = estado;
@@ -18,13 +18,14 @@
             document.getElementById("Nombre").focus();
 
         } else {
-            if (this.descripcion) {
+            if (this.descripcion =="") {
                 document.getElementById("Descripcion").focus();
             } else {
-                alert(this.nombre); 
-              
+                alert(this.nombre);
+                alert(this.id);
+                alert(this.action);
 
-                var id = Id;
+                var id = id;
                 var nombre = this.nombre;
                 var descripcion = this.descripcion;
                 var estado = this.estado;
@@ -32,7 +33,7 @@
                 $.ajax({
                     type: "POST",
                     url: action,
-                    data:{
+                    data: {
                         id, nombre, descripcion, estado
                     },
                     success: (response) => {
@@ -44,9 +45,10 @@
 
 
             }
-            
-        
+
+
+
+        }
 
     }
-
 }

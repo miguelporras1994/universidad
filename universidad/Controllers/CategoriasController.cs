@@ -34,7 +34,7 @@ namespace universidad.Controllers
             }
 
             var categoria = await _context.Categoria
-                .SingleOrDefaultAsync(m => m.CaterogiaID == id);
+                .SingleOrDefaultAsync(m => m.CategoriaID == id);
             if (categoria == null)
             {
                 return NotFound();
@@ -43,26 +43,17 @@ namespace universidad.Controllers
             return View(categoria);
         }
 
-        // GET: Categorias/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Categorias/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CaterogiaID,Nombre,Descripcion,Estado")] Categoria categoria)
+        public  ActionResult  Crear( Categoria c)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(categoria);
+                _context.Add(c);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(categoria);
+            return View(c);
         }
 
         // GET: Categorias/Edit/5
@@ -73,7 +64,7 @@ namespace universidad.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria.SingleOrDefaultAsync(m => m.CaterogiaID == id);
+            var categoria = await _context.Categoria.SingleOrDefaultAsync(m => m.CategoriaID == id);
             if (categoria == null)
             {
                 return NotFound();
@@ -86,9 +77,9 @@ namespace universidad.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CaterogiaID,Nombre,Descripcion,Estado")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoriaID,Nombre,Descripcion,Estado")] Categoria categoria)
         {
-            if (id != categoria.CaterogiaID)
+            if (id != categoria.CategoriaID)
             {
                 return NotFound();
             }
@@ -102,7 +93,7 @@ namespace universidad.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CategoriaExists(categoria.CaterogiaID))
+                    if (!CategoriaExists(categoria.CategoriaID))
                     {
                         return NotFound();
                     }
@@ -125,7 +116,7 @@ namespace universidad.Controllers
             }
 
             var categoria = await _context.Categoria
-                .SingleOrDefaultAsync(m => m.CaterogiaID == id);
+                .SingleOrDefaultAsync(m => m.CategoriaID == id);
             if (categoria == null)
             {
                 return NotFound();
@@ -139,7 +130,7 @@ namespace universidad.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var categoria = await _context.Categoria.SingleOrDefaultAsync(m => m.CaterogiaID == id);
+            var categoria = await _context.Categoria.SingleOrDefaultAsync(m => m.CategoriaID == id);
             _context.Categoria.Remove(categoria);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -147,7 +138,7 @@ namespace universidad.Controllers
 
         private bool CategoriaExists(int id)
         {
-            return _context.Categoria.Any(e => e.CaterogiaID == id);
+            return _context.Categoria.Any(e => e.CategoriaID == id);
         }
     }
 }

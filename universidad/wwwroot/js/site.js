@@ -188,13 +188,13 @@ $('#EliminarCategoria').on('shown.bs.modal', function () {
 
 
 var AgregarCategoria = () => {
-    var Id = document.getElementById("CategoriaID").value;
+    var id = document.getElementById("CategoriaID").value;
     var nombre = document.getElementById("Nombre").value;
     var descripcion = document.getElementById("Descripcion").value;
     var estados = document.getElementById('Estado');
-    var estado = document.options[estados.selectedIndex].value;
-    var action = 'Categoria/Crear'
-    var categoria = new Categorias(Id, nombre, descripcion, estado, descripcion, action);
+    var estado = estados.options[estados.selectedIndex].value;
+    var action = 'Categorias/Crear';
+    var categoria = new Categorias(id,nombre,descripcion,estado,action);
     categoria.GuardarCategoria();
 
 }
