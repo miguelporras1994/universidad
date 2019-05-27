@@ -9,6 +9,17 @@
 <p>
     <a class="btn btn-success" data-toggle="modal" data-target="#CrearCategoria">Crear</a>
 </p>
+
+<div class="form-group">
+
+    <div class="col-md-6">
+
+        <input id="filtrar" name="filtrar" placeholder="Buscar" onkeyup="filtrarDatos(1)" class="from-control" />
+    </div>
+</div>
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -32,25 +43,25 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoriaID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a class="btn btn-success" data-toggle="modal" data-target="#EditarCaterogia">Editar</a> |
-                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.CategoriaID">detalles</a> |
-                <a class="btn  btn-danger" data-toggle="modal" data-target="#EliminarCategoria">Eliminar</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoriaID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a class="btn btn-success" data-toggle="modal" data-target="#EditarCaterogia">Editar</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.CategoriaID">detalles</a> |
+                    <a class="btn  btn-danger" data-toggle="modal" data-target="#EliminarCategoria">Eliminar</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -71,7 +82,7 @@
                 <form>
 
                     <div class="form-group">
-                       
+
                         <label for="CategoriaID" class="control-label">Numero de Categoria</label>
                         <input name="CategoriaID" id="CategoriaID" class="form-control" />
 
@@ -86,7 +97,7 @@
                     </div>
 
                     <div class="form-group">
-                        
+
                         <label for="Descripcion" class="control-label">Descripcion</label>
                         <input name="Descripcion" id="Descripcion" class="form-control" />
                     </div>
@@ -95,17 +106,17 @@
 
 
 
-                    
+
 
 
                     <div class="form-group">
-    
+
                         <label for="Estado" class="control-label">Estado</label>
                         <select id="Estado" name="Estado" class="form-control">
-                              
+
                             <option value="0">Seleciones el Estado</option>
-                        <option value="true">Activo</option>
-                        <option value="false">Inactivo</option>
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
 
                         </select>
 
@@ -140,165 +151,165 @@
 
 
 
-                    <div class="modal fade" id="EditarCaterogia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Editar Usuarios</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
+<div class="modal fade" id="EditarCaterogia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Editar Usuarios</h4>
+            </div>
+            <div class="modal-body">
+                <form>
 
 
 
 
 
-                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                        <input type="hidden" name="Id" id="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" name="Id" id="Id" />
 
-                                        <div class="form-group">
-                                            <label for="Email" class="control-label">Correo</label>
-                                            <input readonly name="Email" id="Email" class="form-control" />
+                    <div class="form-group">
+                        <label for="Email" class="control-label">Correo</label>
+                        <input readonly name="Email" id="Email" class="form-control" />
 
-                                        </div>
+                    </div>
 
-                                        <div class="form-group">
-                                            <label for="UserName" class="control-label">Nombre</label>
-                                            <input name="UserName" id="UserName" class="form-control" />
+                    <div class="form-group">
+                        <label for="UserName" class="control-label">Nombre</label>
+                        <input name="UserName" id="UserName" class="form-control" />
 
-                                        </div>
+                    </div>
 
-                                        <div class="form-group">
-                                            <label for="PhoneNumber" class="control-label">Telefono</label>
-                                            <input name="PhoneNumber" id="PhoneNumber" class="form-control" />
-
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <label for="Roles" class="control-label">Rol</label>
-                                            <select id="select" name="select" class="form-control"
-                                                    onclick="getRoles('ApplicationUser/GetRoles')">
-                                                <option value="0">Selecionar EL Rol</option>
-
-                                            </select>
-
-
-
-                                        </div>
-
-
-
-
-
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                                    <button type="button" class="btn btn-primary" onclick="editarusuario('ApplicationUser/Editar')">Guardar datos</button>
-                                </div>
-                            </div>
-
-                        </div>
+                    <div class="form-group">
+                        <label for="PhoneNumber" class="control-label">Telefono</label>
+                        <input name="PhoneNumber" id="PhoneNumber" class="form-control" />
 
                     </div>
 
 
-                    <div class="modal fade" id="EliminarCategoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <Center><h4 class="modal-title" id="myModalLabel">Eliminar Usuario</h4> </Center>
-                                </div>
-                                <input type="hidden" name="EliminarId" id="EliminarId" />
+
+                    <div class="form-group">
+                        <label for="Roles" class="control-label">Rol</label>
+                        <select id="select" name="select" class="form-control"
+                                onclick="getRoles('ApplicationUser/GetRoles')">
+                            <option value="0">Selecionar EL Rol</option>
+
+                        </select>
 
 
-                                <div class="modal-footer">
-                                    <Center>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                                        <button type="button" class="btn btn-danger" onclick="EliminarUsuario('ApplicationUser/Eliminar')">Si</button>
-                                    </Center>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
 
-                    <div class="modal fade" id="ModalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <Center><h4 class="modal-title" id="myModalLabel">Nuevo Usuario</h4> </Center>
-                                </div>
-                                <div class="modal-body">
-
-
-
-                                    <form>
-
-                                        <div class="form-group">
-                                            <label for="email" class="control-label">Correo1</label>
-                                            <input name="email" id="email" class="form-control" />
-
-
-                                            <div class="form-group">
-                                                <label for="PasswordHash" class="control-label">Clave</label>
-                                                <input name="PasswordHash" id="PasswordHash" class="form-control" />
-
-                                            </div>
-
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="PasswordRepi" class="control-label">Repetir Clave</label>
-                                            <input name="PasswordRepi" id="PasswordRepi" class="form-control" />
-                                        </div>
 
 
 
 
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="editarusuario('ApplicationUser/Editar')">Guardar datos</button>
+            </div>
+        </div>
 
-                                        <div class="form-group">
-                                            <label for="PhoneNumbernuevo" class="control-label">Telefono</label>
-                                            <input name="PhoneNumbernuevo" id="PhoneNumbernuevo" class="form-control" />
+    </div>
 
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <label for="selectNuevo" class="control-label">Rol</label>
-                                            <select id="selectNuevo" name="selectNuevo" class="form-control"
-                                                    onclick="getRoles('ApplicationUser/GetRoles')">
-                                                <option value="0">Selecionar EL Rol</option>
-
-                                            </select>
+</div>
 
 
+<div class="modal fade" id="EliminarCategoria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <Center><h4 class="modal-title" id="myModalLabel">Eliminar Usuario</h4> </Center>
+            </div>
+            <input type="hidden" name="EliminarId" id="EliminarId" />
 
-                                        </div>
+
+            <div class="modal-footer">
+                <Center>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-danger" onclick="EliminarUsuario('ApplicationUser/Eliminar')">Si</button>
+                </Center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalCrear" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <Center><h4 class="modal-title" id="myModalLabel">Nuevo Usuario</h4> </Center>
+            </div>
+            <div class="modal-body">
 
 
 
+                <form>
+
+                    <div class="form-group">
+                        <label for="email" class="control-label">Correo1</label>
+                        <input name="email" id="email" class="form-control" />
 
 
-                                    </form>
+                        <div class="form-group">
+                            <label for="PasswordHash" class="control-label">Clave</label>
+                            <input name="PasswordHash" id="PasswordHash" class="form-control" />
 
-                                </div>
-                                <div class="modal-footer">
-                                    <Center>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-
-                                        <button type="button" class="btn btn-danger" onclick="CrearUsuario('ApplicationUser/Crear')">Guardar Usuario</button>
-                                    </Center>
-                                </div>
-                            </div>
                         </div>
+
+
                     </div>
+
+                    <div class="form-group">
+                        <label for="PasswordRepi" class="control-label">Repetir Clave</label>
+                        <input name="PasswordRepi" id="PasswordRepi" class="form-control" />
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="PhoneNumbernuevo" class="control-label">Telefono</label>
+                        <input name="PhoneNumbernuevo" id="PhoneNumbernuevo" class="form-control" />
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="selectNuevo" class="control-label">Rol</label>
+                        <select id="selectNuevo" name="selectNuevo" class="form-control"
+                                onclick="getRoles('ApplicationUser/GetRoles')">
+                            <option value="0">Selecionar EL Rol</option>
+
+                        </select>
+
+
+
+                    </div>
+
+                    <p id="mensaje"></p>
+
+
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <Center>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+                    <button type="button" class="btn btn-danger" onclick="CrearUsuario('ApplicationUser/Crear')">Guardar Usuario</button>
+                </Center>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
