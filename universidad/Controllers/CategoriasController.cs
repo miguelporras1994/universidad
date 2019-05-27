@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,9 @@ namespace universidad.Controllers
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private object errorList;
+
+        public object Covert { get; private set; }
 
         public CategoriasController(ApplicationDbContext context)
         {
@@ -44,18 +48,37 @@ namespace universidad.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public  ActionResult  Crear( Categoria c)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(c);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(c);
-        }
 
+        public List<IdentityError> Crear(int id, string nombre, string descripcion, string estado)
+        {
+
+            var error = new List<IdentityError>();
+                  Categoria cat = new Categoria
+                {
+                    CategoriaID = id,
+                    Nombre = nombre,
+                    Descripcion = descripcion,
+                    Estado = Convert.ToBoolean(estado)
+                };
+                _context.Add(cat);
+                _context.SaveChanges();
+
+
+                error.Add(new IdentityError
+                {
+                    Code = "Save",
+                    Description = "Save"
+                });
+
+            
+
+            return error;
+
+        }
+    
+
+
+ 
         // GET: Categorias/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -140,5 +163,6 @@ namespace universidad.Controllers
         {
             return _context.Categoria.Any(e => e.CategoriaID == id);
         }
-    }
+    }  
 }
+

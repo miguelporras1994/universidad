@@ -9,7 +9,7 @@
     }
 
     GuardarCategoria() {
-        if (this.Id == "") {
+        if (this.id == "") {
             document.getElementById("CategoriaID")
 
         }
@@ -25,7 +25,7 @@
                 alert(this.id);
                 alert(this.action);
 
-                var id = id;
+                var id = this.id;
                 var nombre = this.nombre;
                 var descripcion = this.descripcion;
                 var estado = this.estado;
@@ -36,7 +36,16 @@
                     data: {
                         id, nombre, descripcion, estado
                     },
-                    success: (response) => {
+                    success: function (response) {
+                        if (Response == "Save") {
+                            window.location.href = "Categoria"
+
+                        }
+                        else {
+                            alert("no funciona ")
+
+                        }
+                           
 
                     }
 
