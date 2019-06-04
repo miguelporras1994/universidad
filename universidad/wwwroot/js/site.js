@@ -202,8 +202,13 @@ var AgregarCategoria = () => {
 
 var filtrarDatos = (numPagina) => {
     var valor = document.getElementById("filtrar").value;
-    var action = 'Categoria/filtrarDatos';
+      var action = 'Categorias/FiltrarDatos';
     var envio = new Categorias(valor, "", "", "",action);
     envio.BuscarDatos(numPagina);
 
 }
+
+$().ready(() => {
+    document.getElementById("filtrar").focus();
+    filtrarDatos(1);
+});

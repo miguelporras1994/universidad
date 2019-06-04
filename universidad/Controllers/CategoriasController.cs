@@ -21,7 +21,7 @@ namespace universidad.Controllers
         public CategoriasController(ApplicationDbContext context)
         {
             _context = context;
-            filtrarDatos(1, "Redes");
+          
         }
 
         // GET: Categorias
@@ -30,23 +30,7 @@ namespace universidad.Controllers
             return View(await _context.Categoria.ToListAsync());
         }
 
-        // GET: Categorias/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categoria
-                .SingleOrDefaultAsync(m => m.CategoriaID == id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-
-            return View(categoria);
-        }
+        
 
         [HttpPost]
 
@@ -80,96 +64,12 @@ namespace universidad.Controllers
 
 
 
-        // GET: Categorias/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categoria.SingleOrDefaultAsync(m => m.CategoriaID == id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-            return View(categoria);
-        }
-
-        // POST: Categorias/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoriaID,Nombre,Descripcion,Estado")] Categoria categoria)
-        {
-            if (id != categoria.CategoriaID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(categoria);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CategoriaExists(categoria.CategoriaID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(categoria);
-        }
-
-        // GET: Categorias/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var categoria = await _context.Categoria
-                .SingleOrDefaultAsync(m => m.CategoriaID == id);
-            if (categoria == null)
-            {
-                return NotFound();
-            }
-
-            return View(categoria);
-        }
-
-        // POST: Categorias/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var categoria = await _context.Categoria.SingleOrDefaultAsync(m => m.CategoriaID == id);
-            _context.Categoria.Remove(categoria);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CategoriaExists(int id)
-        {
-            return _context.Categoria.Any(e => e.CategoriaID == id);
-        }
 
         public List<object[]> filtrarDatos(int numPagina, string valor)
         {
-            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 1;
+            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 3;
             int can_paginas, pagina;
-            string datafilter = "", paginador = "", Estado = null;
+            string Filtrador = "", paginador = "", Estado = null;
             List<object[]> data = new List<object[]>();
 
             IEnumerable<Categoria> Consulta;
@@ -192,7 +92,37 @@ namespace universidad.Controllers
 
 
             cant = Consulta.Count();
+            foreach (var nuevo in Consulta)
+            {
+                if (nuevo.Estado == true)
+                {
+                    Estado = "Activo";
+                }
+
+                else
+                {
+                    Estado = "Inactivo";
+                }
+
+                Filtrador += "<tr>" +
+                    "<td>" + nuevo.CategoriaID+ "</td>" +
+                    "<td>" + nuevo.Nombre + "</td>" +
+                      "<td>" + nuevo.Descripcion + "</td>" +
+                        "<td>" + Estado + "</td>" + "<td>"+
+                      
+
+                          " <a class='btn  btn-success' data-toggle='modal' data-target='#EditarCaterogia'>Editar</a>" +
+
+                       " <a class='btn  btn-danger' data-toggle='modal' data-target='#EliminarCategoria'>Eliminar</a>" +
+                       "</td>" + "</tr>";
+            }
+
+            object[] objecto = { Filtrador, paginador };
+            data.Add(objecto);
             return data;
+
+        }
+            
 
 
 
@@ -201,4 +131,4 @@ namespace universidad.Controllers
         }
     }
 
-}
+

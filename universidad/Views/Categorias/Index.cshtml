@@ -20,51 +20,82 @@
 
 
 
+@*<table class="table">
+        <thead>
+            <tr>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CategoriaID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoriaID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td>
+                        <a class="btn btn-success" data-toggle="modal" data-target="#EditarCaterogia">Editar</a> |
+
+                        <a class="btn  btn-danger" data-toggle="modal" data-target="#EliminarCategoria">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
+
+
 <table class="table">
     <thead>
         <tr>
-
-
             <th>
-                @Html.DisplayNameFor(model => model.CategoriaID)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                Descripcion
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Estado)
+                Estado
             </th>
-            <th></th>
+            <th>
+                Opciones
+            </th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CategoriaID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Estado)
-                </td>
-                <td>
-                    <a class="btn btn-success" data-toggle="modal" data-target="#EditarCaterogia">Editar</a> |
-                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.CategoriaID">detalles</a> |
-                    <a class="btn  btn-danger" data-toggle="modal" data-target="#EliminarCategoria">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
+    <tbody id="resultSearch"></tbody>
 </table>
+<div id="paginado">
+</div>
+
+
+
+
+
 
 
 
