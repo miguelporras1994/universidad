@@ -21,6 +21,7 @@ namespace universidad.Controllers
         public CategoriasController(ApplicationDbContext context)
         {
             _context = context;
+            filtrarDatos(1, "Redes");
         }
 
         // GET: Categorias
@@ -53,32 +54,32 @@ namespace universidad.Controllers
         {
 
             var error = new List<IdentityError>();
-                  Categoria cat = new Categoria
-                {
-                    CategoriaID = id,
-                    Nombre = nombre,
-                    Descripcion = descripcion,
-                    Estado = Convert.ToBoolean(estado)
-                };
-                _context.Add(cat);
-                _context.SaveChanges();
+            Categoria cat = new Categoria
+            {
+                CategoriaID = id,
+                Nombre = nombre,
+                Descripcion = descripcion,
+                Estado = Convert.ToBoolean(estado)
+            };
+            _context.Add(cat);
+            _context.SaveChanges();
 
 
-                error.Add(new IdentityError
-                {
-                    Code = "Save",
-                    Description = "Save"
-                });
+            error.Add(new IdentityError
+            {
+                Code = "Save",
+                Description = "Save"
+            });
 
-            
+
 
             return error;
 
         }
-    
 
 
- 
+
+
         // GET: Categorias/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -163,6 +164,41 @@ namespace universidad.Controllers
         {
             return _context.Categoria.Any(e => e.CategoriaID == id);
         }
-    }  
-}
 
+        public List<object[]> filtrarDatos(int numPagina, string valor)
+        {
+            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 1;
+            int can_paginas, pagina;
+            string datafilter = "", paginador = "", Estado = null;
+            List<object[]> data = new List<object[]>();
+
+            IEnumerable<Categoria> Consulta;
+
+            var Categorias = _context.Categoria.OrderBy(c => c.Nombre).ToList();
+
+            numregistro = Categorias.Count;
+
+            inicio = (numPagina - 1) * resgistropagina;
+            can_paginas = (numPagina / resgistropagina);
+            if (valor == "null")
+            {
+                Consulta = Categorias.Skip(inicio).Take(resgistropagina);
+
+            }else
+            {
+
+                Consulta = Categorias.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
+            }
+
+
+            cant = Consulta.Count();
+            return data;
+
+
+
+
+
+        }
+    }
+
+}

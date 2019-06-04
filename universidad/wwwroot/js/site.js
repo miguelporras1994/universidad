@@ -198,3 +198,12 @@ var AgregarCategoria = () => {
     categoria.GuardarCategoria();
 
 }
+
+
+var filtrarDatos = (numPagina) => {
+    var valor = document.getElementById("filtrar").value;
+    var action = 'Categoria/filtrarDatos';
+    var envio = new Categorias(valor, "", "", "",action);
+    envio.BuscarDatos(numPagina);
+
+}

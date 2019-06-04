@@ -31,7 +31,7 @@
                 var descripcion = this.descripcion;
                 var estado = this.estado;
                 var action = this.action;
-                var mensaje ='';
+                var mensaje = '';
                 $.ajax({
                     type: "POST",
                     url: action,
@@ -44,7 +44,7 @@
                         });
 
 
-                        if (mensaje == "SAVE") {
+                        if (mensaje == "Save") {
                             this.restablecer();
                         } else {
 
@@ -53,7 +53,7 @@
                         }
                     }
 
-                    
+
                 });
 
             }
@@ -65,6 +65,32 @@
         document.getElementById("Descripcion").value = "";
         document.getElementById("mensaje").innerHTML = "";
         document.getElementById("Estado").selectedIndex = 0;
-        $('#modalAC').modal('hide');
+        $('#CrearCategoria').modal('hide');
     }
+
+
+    BuscarDatos(numPagina) {
+        var valor = this.id;
+        var action = this.action;
+        if (valor == "") {
+            valor = "null";
+        }
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { valor, numPagina },
+            success: (response) => {
+                console.log(response);
+                $.each(response, (index, val) => {
+                    $("#resultSearch").html(val[0]);
+                    $("#paginado").html(val[1]);
+
+                });
+            }
+        });
+     
+    }
+
+
+    
 }
