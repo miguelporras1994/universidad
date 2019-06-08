@@ -16,6 +16,18 @@ function getUsuario(id, action) {
 
     });
 }
+
+function EnvioCategoria(id, action) {
+    $.ajax({
+        type: "POST",
+        url: action,
+        data: { id },
+        success: function (response) {
+            Console.log(response)
+        }
+    })
+
+}
 var j = 0;
 var id;
 var userName;
@@ -212,3 +224,5 @@ $().ready(() => {
     document.getElementById("filtrar").focus();
     filtrarDatos(1);
 });
+
+

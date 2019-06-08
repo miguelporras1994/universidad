@@ -67,7 +67,7 @@ namespace universidad.Controllers
 
         public List<object[]> filtrarDatos(int numPagina, string valor)
         {
-            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 3;
+            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 4;
             int can_paginas, pagina;
             string Filtrador = "", paginador = "", Estado = null;
             List<object[]> data = new List<object[]>();
@@ -109,11 +109,11 @@ namespace universidad.Controllers
                     "<td>" + nuevo.Nombre + "</td>" +
                       "<td>" + nuevo.Descripcion + "</td>" +
                         "<td>" + Estado + "</td>" + "<td>"+
-                      
 
-                          " <a class='btn  btn-success' data-toggle='modal' data-target='#EditarCaterogia'>Editar</a>" +
 
-                       " <a class='btn  btn-danger' data-toggle='modal' data-target='#EliminarCategoria'>Eliminar</a>" +
+                          " <a class='btn  btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='EnvioCategoria("+nuevo.CategoriaID+")'>Editar</a>" +
+
+                       " <a class='btn  btn-danger' data-toggle='modal' data-target='#EliminarCategoria' >Eliminar</a>" +
                        "</td>" + "</tr>";
             }
 
