@@ -150,46 +150,47 @@
 
 
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" name="Id" id="Id" />
-
                     <div class="form-group">
-                        <label for="Email" class="control-label">Correo</label>
-                        <input readonly name="Email" id="Email" class="form-control" />
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="UserName" class="control-label">Nombre</label>
-                        <input name="UserName" id="UserName" class="form-control" />
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="PhoneNumber" class="control-label">Telefono</label>
-                        <input name="PhoneNumber" id="PhoneNumber" class="form-control" />
-
+                        <input type="hidden" name="CategoriaID" id="CategoriaID" />
                     </div>
 
 
 
-                    <div class="form-group">
-                        <label for="Roles" class="control-label">Rol</label>
-                        <select id="select" name="select" class="form-control"
-                                onclick="getRoles('ApplicationUser/GetRoles')">
-                            <option value="0">Selecionar EL Rol</option>
+                        <div class="form-group">
+                            <label for="Nombre" class="control-label">Nombre</label>
+                            <input name="Nombre" id="Nombre" class="form-control" />
 
-                        </select>
+                        </div>
 
 
+                        <div class="form-group">
 
-                    </div>
+                            <label for="Descripcion" class="control-label">Descripcion</label>
+                            <input name="Descripcion" id="Descripcion" class="form-control" />
+                        </div>
 
+
+
+                        <div class="form-group">
+
+                            <label for="Estado" class="control-label">Estado</label>
+                            <select id="Estado" name="Estado" class="form-control">
+
+                                <option value="0">Seleciones el Estado</option>
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+
+                            </select>
+
+
+
+                        </div>
 
 
 
 
                 </form>
-            </div>
+    </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="editarusuario('ApplicationUser/Editar')">Guardar datos</button>

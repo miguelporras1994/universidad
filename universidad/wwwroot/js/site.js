@@ -3,7 +3,7 @@ $('#ModalEditar').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
 
-function getUsuario(id, action) {
+function getUsuario(id, action ) {
     $.ajax({
         type:"POST",
         url: action,
@@ -17,7 +17,8 @@ function getUsuario(id, action) {
     });
 }
 
-function EnvioCategoria(id, action) {
+function EnvioCategoria(id) {
+    var action = 'Categorias/FiltrarDatos'
     $.ajax({
         type: "POST",
         url: action,

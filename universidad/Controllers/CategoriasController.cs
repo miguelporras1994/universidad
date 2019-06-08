@@ -111,7 +111,7 @@ namespace universidad.Controllers
                         "<td>" + Estado + "</td>" + "<td>"+
 
 
-                          " <a class='btn  btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='EnvioCategoria("+nuevo.CategoriaID+")'>Editar</a>" +
+                          " <a class='btn  btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='EnvioCategoria("+nuevo.CategoriaID +")'>Editar</a>" +
 
                        " <a class='btn  btn-danger' data-toggle='modal' data-target='#EliminarCategoria' >Eliminar</a>" +
                        "</td>" + "</tr>";
