@@ -10,7 +10,9 @@ function getUsuario(id, action ) {
         data: { id },
         success: function (response){
 
-            mostrarUsuario(response);
+           /* mostrarUsuario(response);*/
+
+            Console.log(response)
         }
 
 
@@ -18,7 +20,7 @@ function getUsuario(id, action ) {
 }
 
 function EnvioCategoria(id) {
-    var action = 'Categorias/FiltrarDatos'
+    var action = 'Categorias/ObtenerCategoria'
     $.ajax({
         type: "POST",
         url: action,

@@ -30,7 +30,16 @@ namespace universidad.Controllers
             return View(await _context.Categoria.ToListAsync());
         }
 
-        
+
+        public  ActionResult ObtenerCategoria(int id) {
+
+
+           
+            Categoria encontrar = _context.Categoria.Where(a => a.CategoriaID == id).FirstOrDefault();
+
+            return  View(encontrar);
+        }
+
 
         [HttpPost]
 
