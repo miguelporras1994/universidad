@@ -10,27 +10,17 @@ function getUsuario(id, action ) {
         data: { id },
         success: function (response){
 
-           /* mostrarUsuario(response);*/
+            mostrarUsuario(response);
 
-            Console.log(response)
+           
         }
 
 
     });
 }
 
-function EnvioCategoria(id) {
-    var action = 'Categorias/ObtenerCategoria'
-    $.ajax({
-        type: "POST",
-        url: action,
-        data: { id },
-        success: function (response) {
-            Console.log(response)
-        }
-    })
 
-}
+
 var j = 0;
 var id;
 var userName;
@@ -227,5 +217,26 @@ $().ready(() => {
     document.getElementById("filtrar").focus();
     filtrarDatos(1);
 });
+
+
+var editarEstado = (id) => {
+
+    idCategoria = id;
+    var action = 'Categorias/getCategoria';
+    var encontrar = new Categorias("", "", "","",action);
+    encontrar.getCategoria(id);
+}
+
+
+var editarCategoria = () => {
+    var action = 'Categorias/editarCategoria';
+    var categoria = new Categorias("", "", "", action);
+    categoria.editarCategoria(idCategoria , "estado")
+}
+
+
+
+
+
 
 

@@ -21,7 +21,7 @@ namespace universidad.Controllers
         public CategoriasController(ApplicationDbContext context)
         {
             _context = context;
-          
+
         }
 
         // GET: Categorias
@@ -31,13 +31,14 @@ namespace universidad.Controllers
         }
 
 
-        public  ActionResult ObtenerCategoria(int id) {
+        public ActionResult ObtenerCategoria(int id)
+        {
 
 
-           
+
             Categoria encontrar = _context.Categoria.Where(a => a.CategoriaID == id).FirstOrDefault();
 
-            return  View(encontrar);
+            return View(encontrar);
         }
 
 
@@ -93,7 +94,8 @@ namespace universidad.Controllers
             {
                 Consulta = Categorias.Skip(inicio).Take(resgistropagina);
 
-            }else
+            }
+            else
             {
 
                 Consulta = Categorias.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
@@ -105,24 +107,24 @@ namespace universidad.Controllers
             {
                 if (nuevo.Estado == true)
                 {
-                    Estado = "Activo";
+                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='editarEstado(" + nuevo.CategoriaID + ")' class='btn btn-success'>Activo</a>";
                 }
 
                 else
                 {
-                    Estado = "Inactivo";
+                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='editarEstado(" + nuevo.CategoriaID + ")' class='btn btn-danger'>Inactivo</a>";
                 }
 
                 Filtrador += "<tr>" +
-                    "<td>" + nuevo.CategoriaID+ "</td>" +
+                    "<td>" + nuevo.CategoriaID + "</td>" +
                     "<td>" + nuevo.Nombre + "</td>" +
                       "<td>" + nuevo.Descripcion + "</td>" +
-                        "<td>" + Estado + "</td>" + "<td>"+
+                        "<td>" + Estado + "</td>" + "<td>" +
 
 
-                          " <a class='btn  btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='EnvioCategoria("+nuevo.CategoriaID +")'>Editar</a>" +
+                          " <a class='btn  btn-success' >Editar</a>" +
 
-                       " <a class='btn  btn-danger' data-toggle='modal' data-target='#EliminarCategoria' >Eliminar</a>" +
+                       " <a class='btn  btn-danger'  >Eliminar</a>" +
                        "</td>" + "</tr>";
             }
 
@@ -131,13 +133,19 @@ namespace universidad.Controllers
             return data;
 
         }
-            
 
 
 
+        public List<Categoria> getCategoria(int id)
+        {
+            return _context.Categoria.Where(c => c.CategoriaID == id).ToList();
 
 
         }
+    }
+
+
+
     }
 
 
