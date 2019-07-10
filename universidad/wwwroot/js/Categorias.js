@@ -95,6 +95,7 @@ class Categorias {
                 descripcion = response[0].descripcion;
                 estado = response[0].estado;
                 localStorage.removeItem("categoria");
+                this.editar(id, nombre, descripcion, estado, funcion))
                 break;
             default:
         }
@@ -120,6 +121,7 @@ class Categorias {
         document.getElementById("mensaje").innerHTML = "";
         document.getElementById("Estado").selectedIndex = 0;
         $('#CrearCategoria').modal('hide');
+        $('#ModalEstado').modal('hide');
     }
 
 

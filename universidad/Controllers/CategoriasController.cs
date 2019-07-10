@@ -142,10 +142,69 @@ namespace universidad.Controllers
 
 
         }
+
+       
+
+  
+    private Boolean estados;
+
+
+    public List<IdentityError> EditarCategoria(int id, string nombre, string descripcion, Boolean estado, string funcion)
+    {
+
+
+            var errorlist = new List<IdentityError>();
+            string code = "", des = "";
+            switch (funcion)
+            {
+                case "estado":
+
+                    if (estados)
+                    {
+                        estados = false;
+                    }
+                    else {
+                        estados = true;
+                            }
+
+                    var categora = new Categoria() {
+                        CategoriaID = id,
+                        Nombre = nombre,
+                        Descripcion = descripcion,
+                        Estado = estados
+
+                    };
+
+                    try
+                    {
+                        _context.Update(categora);
+                        _context.SaveChanges();
+                        code = "Save";
+                        des = "Save";
+                    } 
+                    catch( Exception ex)
+                    {
+                        code = "Error";
+                        des = ex.Message;
+                    }
+                    
+
+                    break;
+
+            }
+
+            errorlist.Add(new IdentityError
+            {
+                Code = code,
+                Description = des
+            });
+            return errorlist;
+
+        }
+
+
     }
 
-
-
-    }
+}
 
 
