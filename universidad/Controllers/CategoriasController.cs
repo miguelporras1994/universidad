@@ -149,7 +149,7 @@ namespace universidad.Controllers
     private Boolean estados;
 
 
-    public List<IdentityError> EditarCategoria(int id, string nombre, string descripcion, Boolean estado, string funcion)
+    public List<IdentityError> editarCategoria(int id, string nombre, string descripcion, Boolean estado, string funcion)
     {
 
 
@@ -159,19 +159,19 @@ namespace universidad.Controllers
             {
                 case "estado":
 
-                    if (estados)
+                    if (estado == false )
                     {
-                        estados = false;
+                        estado = true;
                     }
                     else {
-                        estados = true;
+                        estado = false;
                             }
 
                     var categora = new Categoria() {
                         CategoriaID = id,
                         Nombre = nombre,
                         Descripcion = descripcion,
-                        Estado = estados
+                        Estado = estado
 
                     };
 

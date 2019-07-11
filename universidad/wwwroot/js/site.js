@@ -230,7 +230,7 @@ var editarEstado = (id) => {
 
 var editarCategoria = () => {
     var action = 'Categorias/editarCategoria';
-    var categoria = new Categorias("", "", "", action);
+    var categoria = new Categorias("", "", "","", action);
     categoria.editarCategoria(idCategoria , "estado")
 }
 
