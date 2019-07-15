@@ -44,10 +44,11 @@ namespace universidad.Controllers
 
         [HttpPost]
 
-        public List<IdentityError> Crear(int id, string nombre, string descripcion, string estado)
+        public List<IdentityError> Crear( int id, string nombre, string descripcion, string estado)
         {
-
+           
             var error = new List<IdentityError>();
+    
             Categoria cat = new Categoria
             {
                 CategoriaID = id,
@@ -196,6 +197,27 @@ namespace universidad.Controllers
 
         }
 
+        public string EditarCategoria(Categoria c, int id, string nombre, string descripcion, Boolean estado)
+        {
+            string Resp = " ";
+            var validar = _context.Categoria.Find(c.CategoriaID == id);
+            if (validar == null)
+            {
+                Resp = "NO SAVE";
+            }else { 
+            validar.Nombre = nombre;
+            validar.Descripcion = descripcion;
+            validar.Estado = estado;
+            _context.SaveChanges();
+             Resp = "SAVE";
+
+            }
+            return Resp;
+        }
+
+      
+
+            
 
     }
 
