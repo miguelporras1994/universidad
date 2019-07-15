@@ -219,23 +219,38 @@ $().ready(() => {
 });
 
 
-var editarEstado = (id) => {
+var BuscarEstado = (id) => {
 
     idCategoria = id;
-    var action = 'Categorias/getCategoria';
+    var action = 'Categorias/BuscarEstado';
     var encontrar = new Categorias("", "", "","",action);
-    encontrar.getCategoria(id);
+    encontrar.BuscarEstado(id);
 }
 
 
-var editarCategoria = () => {
-    var action = 'Categorias/editarCategoria';
+var EditarEstado = () => {
+    var action = 'Categorias/EditarEstado';
     var categoria = new Categorias("", "", "","", action);
-    categoria.editarCategoria(idCategoria , "estado")
+    categoria.EditarEstado(idCategoria , "estado")
 }
 
+var BuscarCategoria = (id) => {
+    var action = 'Categorias/BuscarEstado';
+    var Buscar = new Categorias(id, "", "", "", action);
+    Buscar.BuscarCategoria(id)
+}
 
+var EditarCategoria = () => {
+    var id = document.getElementById("CategoriaID1").value;
+    var nombre = document.getElementById("Nombre1").value;
+    var descripcion = document.getElementById("Descripcion1").value;
+    var estados = document.getElementById('Estado1');
+    var estado = estados.options[estados.selectedIndex].value;
+    var action = 'Categorias/Crear';
+    var categoria = new Categorias(id, nombre, descripcion, estado, action);
+    categoria.GuardarCategoria();
 
+};
 
 
 

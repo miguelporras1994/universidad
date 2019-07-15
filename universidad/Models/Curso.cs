@@ -10,7 +10,7 @@ namespace universidad.Models
         public int CursoID { get; set; }
         public string Nombre { get; set; }
         public int  Creditos { get; set; }
-            public int Horas { get; set; }
+        public int Horas { get; set; }
         public  float Costo { get; set; }
         public Boolean Estado { get; set; }
         public int CategoriaID  { get; set; }

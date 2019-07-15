@@ -62,7 +62,7 @@ class Categorias {
     }
 
 
-    getCategoria(id) {
+    BuscarEstado(id) {
         var action = this.action;
         $.ajax({
             type: "POST",
@@ -83,7 +83,7 @@ class Categorias {
         });
     }
 
-    editarCategoria(id, funcion) {
+    EditarEstado(id, funcion) {
         var nombre = null;
         var descripcion = null;
         var estado = null;
@@ -113,6 +113,21 @@ class Categorias {
         });
     }
 
+    BuscarCategoria(id) {
+        var action = this.action
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { id },
+            success: (response) => {
+                document.getElementById("CategoriaID1").value = response[0].categoriaID;
+                document.getElementById("Nombre1").value =response[0].nombre;
+                document.getElementById("Descripcion1").value = response[0].descripcion;
+                document.getElementById("Estado1").value = response[0].estado;
+            }
+
+        }) 
+    }
 
 
     restablecer() {

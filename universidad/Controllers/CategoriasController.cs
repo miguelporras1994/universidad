@@ -107,12 +107,12 @@ namespace universidad.Controllers
             {
                 if (nuevo.Estado == true)
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='editarEstado(" + nuevo.CategoriaID + ")' class='btn btn-success'>Activo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CategoriaID + ")' class='btn btn-success'>Activo</a>";
                 }
 
                 else
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='editarEstado(" + nuevo.CategoriaID + ")' class='btn btn-danger'>Inactivo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CategoriaID + ")' class='btn btn-danger'>Inactivo</a>";
                 }
 
                 Filtrador += "<tr>" +
@@ -122,12 +122,11 @@ namespace universidad.Controllers
                         "<td>" + Estado + "</td>" + "<td>" +
 
 
-                          " <a class='btn  btn-success' >Editar</a>" +
+                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria("+ nuevo.CategoriaID+")'>Editar</a>"
 
-                       " <a class='btn  btn-danger'  >Eliminar</a>" +
-                       "</td>" + "</tr>";
+                      ;
             }
-
+            
             object[] objecto = { Filtrador, paginador };
             data.Add(objecto);
             return data;
@@ -136,20 +135,15 @@ namespace universidad.Controllers
 
 
 
-        public List<Categoria> getCategoria(int id)
+        public List<Categoria> BuscarEstado(int id)
         {
             return _context.Categoria.Where(c => c.CategoriaID == id).ToList();
 
 
         }
-
-       
-
-  
-    private Boolean estados;
-
-
-    public List<IdentityError> editarCategoria(int id, string nombre, string descripcion, Boolean estado, string funcion)
+        
+      
+    public List<IdentityError> EditarEstado(int id, string nombre, string descripcion, Boolean estado, string funcion)
     {
 
 
