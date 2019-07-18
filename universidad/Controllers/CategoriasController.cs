@@ -14,7 +14,7 @@ namespace universidad.Controllers
     public class CategoriasController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private object errorList;
+
 
         public object Covert { get; private set; }
 
@@ -44,11 +44,11 @@ namespace universidad.Controllers
 
         [HttpPost]
 
-        public List<IdentityError> Crear( int id, string nombre, string descripcion, string estado)
+        public List<IdentityError> Crear(int id, string nombre, string descripcion, string estado)
         {
-           
+
             var error = new List<IdentityError>();
-    
+
             Categoria cat = new Categoria
             {
                 CategoriaID = id,
@@ -76,7 +76,7 @@ namespace universidad.Controllers
 
 
 
-        public List<object[]> filtrarDatos(int numPagina, string valor)
+        public List<object[]> filtrarDatos(int numPagina, string valor, string order)
         {
             int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 4;
             int can_paginas, pagina;
@@ -84,13 +84,37 @@ namespace universidad.Controllers
             List<object[]> data = new List<object[]>();
 
             IEnumerable<Categoria> Consulta;
+            List<Categoria> Categorias = null;
+            switch (order)
+            {
+                case "id":
+                    Categorias = _context.Categoria.OrderBy(c => c.CategoriaID).ToList();
+                    break;
+                case "nombre":
+                    Categorias = _context.Categoria.OrderBy(c => c.Nombre).ToList();
+                    break;
+                case "des":
+                    Categorias = _context.Categoria.OrderBy(c => c.Descripcion).ToList();
+                    break;
+                case "estado":
 
-            var Categorias = _context.Categoria.OrderBy(c => c.Nombre).ToList();
+                    Categorias = _context.Categoria.OrderBy(c => c.Estado).ToList();
+
+
+                    break;
+
+
+            }
+
 
             numregistro = Categorias.Count;
+            if ((numregistro % resgistropagina) > 0)
+            {
+                numregistro += 3;
+            }
 
             inicio = (numPagina - 1) * resgistropagina;
-            can_paginas = (numPagina / resgistropagina);
+            can_paginas = (numregistro / resgistropagina);
             if (valor == "null")
             {
                 Consulta = Categorias.Skip(inicio).Take(resgistropagina);
@@ -123,96 +147,125 @@ namespace universidad.Controllers
                         "<td>" + Estado + "</td>" + "<td>" +
 
 
-                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria("+ nuevo.CategoriaID+")'>Editar</a>"
+                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria(" + nuevo.CategoriaID + ")'>Editar</a>";
 
-                      ;
             }
-            
+            if (valor == "null")
+            {
+                if (numPagina > 1)
+                {
+                    pagina = numPagina - 1;
+                    paginador += "<a class='btn btn-default' onclick='filtrarDatos(" + 1 + ',' + '"' + order + '"' + ")'> << </a>" +
+                    "<a class='btn btn-default' onclick='filtrarDatos(" + pagina + ',' + '"' + order + '"' + ")'> < </a>";
+                }
+                if (1 < can_paginas)
+                {
+                    paginador += "<strong class='btn btn-success'>" + numPagina + ".de." + can_paginas + "</strong>";
+                }
+                if (numPagina < can_paginas)
+                {
+                    pagina = numPagina + 1;
+                    paginador += "<a class='btn btn-default' onclick='filtrarDatos(" + pagina + ',' + '"' + order + '"' + ")'>  > </a>" +
+                                 "<a class='btn btn-default' onclick='filtrarDatos(" + can_paginas + ',' + '"' + order + '"' + ")'> >> </a>";
+                }
+
+
+
+
+            }
+
             object[] objecto = { Filtrador, paginador };
             data.Add(objecto);
             return data;
 
         }
+    
+
+
+            
+    
 
 
 
-        public List<Categoria> BuscarEstado(int id)
-        {
-            return _context.Categoria.Where(c => c.CategoriaID == id).ToList();
-
-
-        }
-        
-      
-    public List<IdentityError> EditarEstado(int id, string nombre, string descripcion, Boolean estado, string funcion)
-    {
-
-
-            var errorlist = new List<IdentityError>();
-            string code = "", des = "";
-            switch (funcion)
+            public List<Categoria> BuscarEstado(int id)
             {
-                case "estado":
+                return _context.Categoria.Where(c => c.CategoriaID == id).ToList();
 
-                    if (estado == false )
-                    {
-                        estado = true;
-                    }
-                    else {
-                        estado = false;
-                            }
-
-                    var categora = new Categoria() {
-                        CategoriaID = id,
-                        Nombre = nombre,
-                        Descripcion = descripcion,
-                        Estado = estado
-
-                    };
-
-                    try
-                    {
-                        _context.Update(categora);
-                        _context.SaveChanges();
-                        code = "Save";
-                        des = "Save";
-                    } 
-                    catch( Exception ex)
-                    {
-                        code = "Error";
-                        des = ex.Message;
-                    }
-                    
-
-                    break;
 
             }
 
-            errorlist.Add(new IdentityError
+
+            public List<IdentityError> EditarEstado(int id, string nombre, string descripcion, Boolean estado, string funcion)
             {
-                Code = code,
-                Description = des
-            });
-            return errorlist;
 
-        }
 
-        public string EditarCategoria(Categoria c, int id, string nombre, string descripcion, Boolean estado)
+                var errorlist = new List<IdentityError>();
+                string code = "", des = "";
+                switch (funcion)
+                {
+                    case "estado":
+
+                        if (estado == false)
+                        {
+                            estado = true;
+                        }
+                        else {
+                            estado = false;
+                        }
+
+                        var categora = new Categoria() {
+                            CategoriaID = id,
+                            Nombre = nombre,
+                            Descripcion = descripcion,
+                            Estado = estado
+
+                        };
+
+                        try
+                        {
+                            _context.Update(categora);
+                            _context.SaveChanges();
+                            code = "Save";
+                            des = "Save";
+                        }
+                        catch (Exception ex)
+                        {
+                            code = "Error";
+                            des = ex.Message;
+                        }
+
+
+                        break;
+
+                }
+
+                errorlist.Add(new IdentityError
+                {
+                    Code = code,
+                    Description = des
+                });
+                return errorlist;
+
+            }
+        
+
+        public string EditarCategoria( int id, string nombre, string descripcion, Boolean estado)
         {
-            string Resp = " ";
-            var validar = _context.Categoria.Find(c.CategoriaID == id);
+            string Code = " ";
+            var validar = _context.Categoria.Where(a => a.CategoriaID == id).FirstOrDefault();
+
             if (validar == null)
             {
-                Resp = "NO SAVE";
+                Code = "  NO Save";
             }else { 
             validar.Nombre = nombre;
             validar.Descripcion = descripcion;
             validar.Estado = estado;
             _context.SaveChanges();
-             Resp = "SAVE";
 
+                Code = "Save";
             }
-            return Resp;
+            return Code;
         }
 
       

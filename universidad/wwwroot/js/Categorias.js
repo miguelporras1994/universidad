@@ -129,19 +129,41 @@ class Categorias {
         }) 
     }
 
+    EditarCategoria() {
+
+        var id = this.id;
+        var nombre = this.nombre;
+        var descripcion = this.descripcion;
+        var estado = this.estado;
+        var action = this.action;
+
+
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { id, nombre, descripcion, estado },
+            success: (response) => {
+                console.log(response);
+                this.restablecer();
+            }
+        })
+            }
+
+
 
     restablecer() {
         document.getElementById("Nombre").value = "";
         document.getElementById("Descripcion").value = "";
-        document.getElementById("mensaje").innerHTML = "";
+        //document.getElementById("mensaje").innerHTML = "";
         document.getElementById("Estado").selectedIndex = 0;
         $('#CrearCategoria').modal('hide');
         $('#ModaEstado').modal('hide');
-        filtrarDatos(1)
+        $('#EditarCaterogia').modal('hide');
+        filtrarDatos(1,"nombre")
     }
 
 
-    BuscarDatos(numPagina) {
+    BuscarDatos(numPagina , order) {
         var valor = this.id;
         var action = this.action;
         if (valor == "") {
@@ -150,12 +172,12 @@ class Categorias {
         $.ajax({
             type: "POST",
             url: action,
-            data: { valor, numPagina },
+            data: { valor, numPagina,order },
             success: (response) => {
                 console.log(response);
                 $.each(response, (index, val) => {
                     $("#resultSearch").html(val[0]);
-                    $("#paginado").html(val[1]);
+                    $("#paginador").html(val[1]);
 
                 });
             }

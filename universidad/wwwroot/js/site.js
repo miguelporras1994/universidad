@@ -205,17 +205,17 @@ var AgregarCategoria = () => {
 }
 
 
-var filtrarDatos = (numPagina) => {
+var filtrarDatos = (numPagina,order) => {
     var valor = document.getElementById("filtrar").value;
       var action = 'Categorias/FiltrarDatos';
     var envio = new Categorias(valor, "", "", "",action);
-    envio.BuscarDatos(numPagina);
+    envio.BuscarDatos(numPagina,order);
 
 }
 
 $().ready(() => {
     document.getElementById("filtrar").focus();
-    filtrarDatos(1);
+    filtrarDatos(1 ,"nombre");
 });
 
 
@@ -242,13 +242,12 @@ var BuscarCategoria = (id) => {
 
 var EditarCategoria = () => {
     var id = document.getElementById("CategoriaID1").value;
-    var nombre = document.getElementById("Nombre1").value;
-    var descripcion = document.getElementById("Descripcion1").value;
+    var nombre = document.getElementById("Nombre1").value;   var descripcion = document.getElementById("Descripcion1").value;
     var estados = document.getElementById('Estado1');
     var estado = estados.options[estados.selectedIndex].value;
-    var action = 'Categorias/Crear';
+    var action = 'Categorias/EditarCategoria';
     var categoria = new Categorias(id, nombre, descripcion, estado, action);
-    categoria.GuardarCategoria();
+    categoria.EditarCategoria();
 
 };
 
