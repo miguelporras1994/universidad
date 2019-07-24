@@ -26,6 +26,14 @@ namespace universidad.Controllers
             var Mostrar = Db.Curso;
             return View(Mostrar.ToList());
         }
+      
+        public List<Categoria> ValidarCategoria(){
+
+            return Db.Categoria.Where(c => c.Estado == true).ToList();
+
+
+        }
+
 
 
     }

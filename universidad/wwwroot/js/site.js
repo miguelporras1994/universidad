@@ -27,7 +27,7 @@ var userName;
 var email;
 var phoneNumber;
 var index;
-
+// PROGRAMACION DE CATEGORIA
 
     var items;
     function mostrarUsuario(response) {
@@ -250,6 +250,36 @@ var EditarCategoria = () => {
     categoria.EditarCategoria();
 
 };
+
+
+//PROGRAMACION DE MODULO CURSO :)
+
+
+
+$('#CrearCurso').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+
+var ValidarCategoria= () => {
+    var action = 'Curso/ValidarCategoria';
+    var Cursos = new Cursos("", "", "", "", "", "", "", action);
+    Cursos.ValidarCategoria();
+}
+var agregarCurso = () => {
+    var action = 'Curso/AgregarCurso';
+    var nombre = document.getElementById("Nombre").value;
+    var descripcion = document.getElementById("Descripcion").value;
+    var creditos = document.getElementById("Creditos").value;
+    var horas = document.getElementById("Horas").value;
+    var costo = document.getElementById("Costo").value;
+    var estado = document.getElementById("Estado").checked
+    var categorias = document.getElementById('CategoriaCursos');
+    var categoria = categorias.options[categorias.selectedIndex].value;
+    var cursos = new Cursos(nombre, descripcion, creditos, horas, costo, estado, categoria, action);
+    cursos.agregarCurso("", "");
+}
+
 
 
 
