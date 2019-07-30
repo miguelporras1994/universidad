@@ -1,4 +1,5 @@
 ﻿// Write your JavaScript code.
+alert("hola site")
 $('#ModalEditar').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
@@ -263,8 +264,8 @@ $('#CrearCurso').on('shown.bs.modal', function () {
 
 var ValidarCategoria= () => {
     var action = 'Curso/ValidarCategoria';
-    var Cursos = new Cursos("", "", "", "", "", "", "", action);
-    Cursos.ValidarCategoria();
+    var Cursos = new Cursos("","","","","","","",action);
+    Cursos.GeCategoria();
 }
 var agregarCurso = () => {
     var action = 'Curso/AgregarCurso';

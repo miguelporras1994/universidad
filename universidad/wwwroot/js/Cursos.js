@@ -1,5 +1,4 @@
-﻿
-class Cursos {
+﻿class Cursos{
     constructor(nombre, descripcion, creditos, horas, costos, estado, categoria, action) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -10,7 +9,7 @@ class Cursos {
         this.categoria = categoria;
         this.action = action
     }
-    ValidarCategoria() {
+    GetCategoria() {
         var action = this.action;
         var count = 1;
         $.ajax({
