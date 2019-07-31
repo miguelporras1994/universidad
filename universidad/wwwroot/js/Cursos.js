@@ -1,4 +1,4 @@
-﻿class Cursos{
+﻿class Cursos {
     constructor(nombre, descripcion, creditos, horas, costos, estado, categoria, action) {
         this.nombre = nombre;
         this.descripcion = descripcion;

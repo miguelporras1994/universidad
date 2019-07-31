@@ -262,10 +262,10 @@ $('#CrearCurso').on('shown.bs.modal', function () {
 })
 
 
-var ValidarCategoria= () => {
+var ValidarCategoria = () => {
     var action = 'Curso/ValidarCategoria';
-    var Cursos = new Cursos("","","","","","","",action);
-    Cursos.GeCategoria();
+    var Curso = new Cursos("","","","","","","",action);
+    Curso.GetCategoria();
 }
 var agregarCurso = () => {
     var action = 'Curso/AgregarCurso';
@@ -277,8 +277,8 @@ var agregarCurso = () => {
     var estado = document.getElementById("Estado").checked
     var categorias = document.getElementById('CategoriaCursos');
     var categoria = categorias.options[categorias.selectedIndex].value;
-    var cursos = new Cursos(nombre, descripcion, creditos, horas, costo, estado, categoria, action);
-    cursos.agregarCurso("", "");
+    var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, categoria, action);
+    curso.agregarCurso("", "");
 }
 
 
