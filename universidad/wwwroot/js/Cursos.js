@@ -20,7 +20,7 @@
                 console.log(response);
                 if (0 < response.length) {
                     for (var i = 0; i < response.length; i++) {
-                        document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].categoriaID);
+                        document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
                         count++;
                     }
                 }

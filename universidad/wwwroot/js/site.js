@@ -1,5 +1,5 @@
 ﻿// Write your JavaScript code.
-alert("hola site")
+//alert("hola site")
 $('#ModalEditar').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
@@ -194,7 +194,7 @@ $('#EliminarCategoria').on('shown.bs.modal', function () {
 
 
 var AgregarCategoria = () => {
-    var id = document.getElementById("CategoriaID").value;
+    //var id = document.getElementById("CategoriaID").value;
     var nombre = document.getElementById("Nombre").value;
     var descripcion = document.getElementById("Descripcion").value;
     var estados = document.getElementById('Estado');
@@ -216,7 +216,8 @@ var filtrarDatos = (numPagina,order) => {
 
 $().ready(() => {
     document.getElementById("filtrar").focus();
-    filtrarDatos(1 ,"nombre");
+    filtrarDatos(1, "nombre");
+    ValidarCategoria();
 });
 
 

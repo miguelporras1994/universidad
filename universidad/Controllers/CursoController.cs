@@ -23,13 +23,40 @@ namespace universidad.Controllers
         {
 
 
-            var Mostrar = Db.Curso;
-            return View(Mostrar.ToList());
+            List<Curso> Mostrar = Db.Curso.ToList();
+            return View(Mostrar);
         }
       
         public List<Categoria> ValidarCategoria(){
 
-            return Db.Categoria.Where(c => c.Estado == true).ToList();
+            var consulta =Db.Categoria.Where(c => c.Estado == true).ToList();
+
+            return consulta;
+
+
+        }
+
+        public string AgregarCurso( string nombre, string descripcion,int creditos , int horas, int costo,  Boolean estado,  int categoria)
+        {
+
+            Curso crear = new Curso();
+
+            crear.Nombre = nombre;
+            crear.Descripcion = descripcion;
+            crear.Horas = horas;
+            crear.Costo = costo;
+            crear.Estado = estado;
+            crear.CategoriaID = categoria;
+            crear.Creditos = creditos;
+
+            Db.Add(crear);
+            Db.SaveChanges();
+            string Guardado = "save";
+
+            return Guardado;
+
+            
+
 
 
         }
