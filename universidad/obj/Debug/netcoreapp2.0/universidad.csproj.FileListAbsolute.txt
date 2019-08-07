@@ -55,8 +55,8 @@ D:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.
 D:\programacion.net\universidad\universidad\bin\Debug\netcoreapp2.0\universidad.pdb
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.csprojAssemblyReference.cache
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.csproj.CoreCompileInputs.cache
-D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfoInputs.cache
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.AssemblyInfo.cs
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.dll
 D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\universidad.pdb
+D:\programacion.net\universidad\universidad\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs

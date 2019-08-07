@@ -36,7 +36,7 @@ namespace universidad.Controllers
 
 
 
-            Categoria encontrar = _context.Categoria.Where(a => a.CategoriaID == id).FirstOrDefault();
+            Categoria encontrar = _context.Categoria.Where(a => a.CaterogiaID == id).FirstOrDefault();
 
             return View(encontrar);
         }
@@ -51,7 +51,7 @@ namespace universidad.Controllers
 
             Categoria cat = new Categoria
             {
-                CategoriaID = id,
+                CaterogiaID = id,
                 Nombre = nombre,
                 Descripcion = descripcion,
                 Estado = Convert.ToBoolean(estado)
@@ -88,7 +88,7 @@ namespace universidad.Controllers
             switch (order)
             {
                 case "id":
-                    Categorias = _context.Categoria.OrderBy(c => c.CategoriaID).ToList();
+                    Categorias = _context.Categoria.OrderBy(c => c.CaterogiaID).ToList();
                     break;
                 case "nombre":
                     Categorias = _context.Categoria.OrderBy(c => c.Nombre).ToList();
@@ -132,22 +132,22 @@ namespace universidad.Controllers
             {
                 if (nuevo.Estado == true)
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CategoriaID + ")' class='btn btn-success'>Activo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CaterogiaID + ")' class='btn btn-success'>Activo</a>";
                 }
 
                 else
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CategoriaID + ")' class='btn btn-danger'>Inactivo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CaterogiaID + ")' class='btn btn-danger'>Inactivo</a>";
                 }
 
                 Filtrador += "<tr>" +
-                    "<td>" + nuevo.CategoriaID + "</td>" +
+                    "<td>" + nuevo.CaterogiaID + "</td>" +
                     "<td>" + nuevo.Nombre + "</td>" +
                       "<td>" + nuevo.Descripcion + "</td>" +
                         "<td>" + Estado + "</td>" + "<td>" +
 
 
-                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria(" + nuevo.CategoriaID + ")'>Editar</a>";
+                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria(" + nuevo.CaterogiaID + ")'>Editar</a>";
 
             }
             if (valor == "null")
@@ -189,7 +189,7 @@ namespace universidad.Controllers
 
             public List<Categoria> BuscarEstado(int id)
             {
-                return _context.Categoria.Where(c => c.CategoriaID == id).ToList();
+                return _context.Categoria.Where(c => c.CaterogiaID == id).ToList();
 
 
             }
@@ -214,7 +214,7 @@ namespace universidad.Controllers
                         }
 
                         var categora = new Categoria() {
-                            CategoriaID = id,
+                            CaterogiaID = id,
                             Nombre = nombre,
                             Descripcion = descripcion,
                             Estado = estado
@@ -252,7 +252,7 @@ namespace universidad.Controllers
         public string EditarCategoria( int id, string nombre, string descripcion, Boolean estado)
         {
             string Code = " ";
-            var validar = _context.Categoria.Where(a => a.CategoriaID == id).FirstOrDefault();
+            var validar = _context.Categoria.Where(a => a.CaterogiaID == id).FirstOrDefault();
 
             if (validar == null)
             {

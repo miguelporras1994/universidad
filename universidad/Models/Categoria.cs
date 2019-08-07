@@ -9,13 +9,20 @@ namespace universidad.Models
     public class Categoria
     {
 
-        [Key]
-        public int CategoriaID{ get; set; }
-        public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public  Boolean Estado { get; set; }
-        public ICollection<Curso> Cursos { get; set; }
 
+        [Key]
+        public int CaterogiaID { get; set; }
+
+        [StringLength(255)]
+        public string Nombre { get; set; }
+
+        [StringLength(255)]
+        public string Descripcion { get; set; }
+
+        public bool? Estado { get; set; }
+
+       
+        public virtual ICollection<Curso> Curso { get; set; }
     }
 }
     

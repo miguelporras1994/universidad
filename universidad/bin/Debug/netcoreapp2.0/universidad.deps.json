@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "6f78722a2c1f85f07fc498a4f624951ae0329168"
+    "signature": "ce1cb0b00f79b9ba398ce88a13637c3f2b31e9bc"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
       "universidad/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.9",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.3",
           "Microsoft.NETCore.App": "2.0.0",
@@ -257,7 +258,7 @@
           "Microsoft.Data.Sqlite": "2.0.1",
           "Microsoft.Data.Sqlite.Core": "2.0.1",
           "Microsoft.EntityFrameworkCore": "2.2.4",
-          "Microsoft.EntityFrameworkCore.Design": "2.0.3",
+          "Microsoft.EntityFrameworkCore.Design": "2.1.8",
           "Microsoft.EntityFrameworkCore.InMemory": "2.0.3",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.2.4",
@@ -932,7 +933,7 @@
       },
       "Microsoft.AspNetCore.JsonPatch/2.0.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.5.0",
           "Newtonsoft.Json": "10.0.1"
         },
         "runtime": {
@@ -1771,7 +1772,7 @@
           "lib/netstandard1.3/Microsoft.CodeAnalysis.Workspaces.dll": {}
         }
       },
-      "Microsoft.CSharp/4.4.0": {},
+      "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Data.Edm/5.8.2": {
         "runtime": {
           "lib/netstandard1.1/Microsoft.Data.Edm.dll": {
@@ -1932,14 +1933,15 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/2.2.4": {},
-      "Microsoft.EntityFrameworkCore.Design/2.0.3": {
+      "Microsoft.EntityFrameworkCore.Design/2.1.8": {
         "dependencies": {
+          "Microsoft.CSharp": "4.5.0",
           "Microsoft.EntityFrameworkCore.Relational": "2.2.4"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {
-            "assemblyVersion": "2.0.3.0",
-            "fileVersion": "2.0.3.18114"
+            "assemblyVersion": "2.1.8.0",
+            "fileVersion": "2.1.8.19018"
           }
         },
         "compile": {
@@ -2012,7 +2014,7 @@
       },
       "Microsoft.EntityFrameworkCore.Tools/2.0.3": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "2.0.3"
+          "Microsoft.EntityFrameworkCore.Design": "2.1.8"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/2.2.0": {
@@ -2967,7 +2969,7 @@
       },
       "Newtonsoft.Json/10.0.1": {
         "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
+          "Microsoft.CSharp": "4.5.0",
           "System.Collections": "4.3.0",
           "System.ComponentModel.TypeConverter": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
@@ -5553,12 +5555,12 @@
       "path": "microsoft.codeanalysis.workspaces.common/2.3.1",
       "hashPath": "microsoft.codeanalysis.workspaces.common.2.3.1.nupkg.sha512"
     },
-    "Microsoft.CSharp/4.4.0": {
+    "Microsoft.CSharp/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vvVR/B08YVghQ4jHEloxqw2ZWzEGE1AOA5E0DioUM3ujbXz6FD3AfB/0Jl2ohJPd0nXYGwmPe1En6HTsSriq1A==",
-      "path": "microsoft.csharp/4.4.0",
-      "hashPath": "microsoft.csharp.4.4.0.nupkg.sha512"
+      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
     },
     "Microsoft.Data.Edm/5.8.2": {
       "type": "package",
@@ -5616,12 +5618,12 @@
       "path": "microsoft.entityframeworkcore.analyzers/2.2.4",
       "hashPath": "microsoft.entityframeworkcore.analyzers.2.2.4.nupkg.sha512"
     },
-    "Microsoft.EntityFrameworkCore.Design/2.0.3": {
+    "Microsoft.EntityFrameworkCore.Design/2.1.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oDRMRC7vqBEKGB9G+CR5Dkm3+jrbnA5NL5k6HKZZ5noB6ZoBeyD7DDcBsLXHT2SpAkVwQXKp+u44Y+QdOI+nRA==",
-      "path": "microsoft.entityframeworkcore.design/2.0.3",
-      "hashPath": "microsoft.entityframeworkcore.design.2.0.3.nupkg.sha512"
+      "sha512": "sha512-VwQaua8aBRPGLL3VK8nlyHrcwKZjVDGv9USFwtRX1kn4M6yCc46nsVQEVYQG+d+l4y9Jo0qH+XQ1nm8vqGmdcQ==",
+      "path": "microsoft.entityframeworkcore.design/2.1.8",
+      "hashPath": "microsoft.entityframeworkcore.design.2.1.8.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.InMemory/2.0.3": {
       "type": "package",

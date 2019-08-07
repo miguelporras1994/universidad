@@ -57,7 +57,7 @@
                         @Html.DisplayFor(modelItem => item.Estado)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Categoria.CategoriaID)
+                        @Html.DisplayFor(modelItem => item.Categoria.CaterogiaID)
                     </td>
                     <td>
                         <a asp-action="Edit" asp-route-id="@item.CursoID">Edit</a> |
@@ -78,7 +78,7 @@
                     <center> <h4 class="modal-title" id="myModalLabel">Crear Curso</h4> </center>
                 </div>
                 <div class="modal-body">
-                    <form asp-action="">
+                    @*<form asp-action=" ">*@
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <label for="Nombre" class="col-md-2 control-label">Nombre</label>
@@ -86,7 +86,7 @@
                                     <input for="Nombre" id="Nombre" placeholder="Nombre" name="Nombre" class="form-control" />
                                 </div>
                             </div>
-                            </div>
+
                             <div class="form-group">
                                 <label for="Descripcion" class="col-md-2 control-label">Descripcion</label>
                                 <div class="col-md-10">
@@ -122,17 +122,19 @@
                             <div class="form-group">
                                 <label for="Categoria" class="col-md-2 control-label">Categoria</label>
                                 <div class="col-md-10">
-                                    <select id='CategoriaCursos' class="form-control" onclick="ValidarCategoria()">
+                                    <select id='CategoriaCursos' class="form-control" ">
                                         <option value='0'>Seleccione un curso</option>
 
                                     </select>
                                 </div>
-                            
 
+                            </div>
                         </div>
+
                         <label id="mensaje" class="col-md-2 control-label"></label>
-                    </form>
+                    @*</form>*@
                 </div>
+               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                     <button type="button" onclick="agregarCurso()" class="btn btn-primary">Guardar</button>
