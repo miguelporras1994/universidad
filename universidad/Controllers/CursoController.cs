@@ -36,7 +36,7 @@ namespace universidad.Controllers
 
         }
 
-        public string AgregarCurso( string nombre, string descripcion,int creditos , int horas, int costo,  Boolean estado,  int categoria)
+        public string AgregarCurso( string nombre, string descripcion,int creditos , int horas, decimal costo,  Boolean estado,  int categoria)
         {
 
             Curso crear = new Curso();
@@ -49,11 +49,20 @@ namespace universidad.Controllers
             crear.CategoriaID = categoria;
             crear.Creditos = creditos;
 
-            Db.Add(crear);
-            Db.SaveChanges();
-            string Guardado = "save";
+            string Code =" ";
+            try
+            {
 
-            return Guardado;
+                Db.Add(crear);
+                Db.SaveChanges();
+              Code = "Save";
+
+            } catch( Exception ){
+
+                Code = "No save";
+            }
+
+            return Code;
 
             
 

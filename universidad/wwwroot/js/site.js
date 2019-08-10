@@ -274,7 +274,7 @@ var agregarCurso = () => {
     var descripcion = document.getElementById("Descripcion").value;
     var creditos = document.getElementById("Creditos").value;
     var horas = document.getElementById("Horas").value;
-    var costo = document.getElementById("Costo").value;
+    var costo = document.getElementById("osto").value;
     var estado = document.getElementById("Estado").checked
     var categorias = document.getElementById('CategoriaCursos');
     var categoria = categorias.options[categorias.selectedIndex].value;

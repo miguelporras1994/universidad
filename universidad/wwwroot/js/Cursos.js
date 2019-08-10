@@ -62,7 +62,7 @@
                                         id, nombre, descripcion, creditos, horas, costos, estado, categoria, funcion
                                     },
                                     success: (response) => {
-                                        if ("Save" == response[0].code) {
+                                        if ("Save" == response) {
                                             this.restablecer();
                                         } else {
                                             document.getElementById("mensaje").innerHTML = "No se puede guardar el curso";
