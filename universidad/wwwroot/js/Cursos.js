@@ -81,11 +81,11 @@
         document.getElementById("Descripcion").value = "";
         document.getElementById("Creditos").value = "";
         document.getElementById("Horas").value = "";
-        document.getElementById("Costo").value = "";
+        document.getElementById("osto").value = "";
         document.getElementById("Estado").checked = false;
         document.getElementById('CategoriaCursos').selectedIndex = 0;
         document.getElementById("mensaje").innerHTML = "";
 
-        $('#modalCS').modal('hide');
+        $('#CrearCurso').modal('hide');
     }
 }

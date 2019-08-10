@@ -36,7 +36,7 @@ namespace universidad.Controllers
 
         }
 
-        public string AgregarCurso( string nombre, string descripcion,int creditos , int horas, decimal costo,  Boolean estado,  int categoria)
+        public string AgregarCurso( string nombre, string descripcion,int creditos , int horas, decimal costos,  Boolean estado,  int categoria)
         {
 
             Curso crear = new Curso();
@@ -44,7 +44,7 @@ namespace universidad.Controllers
             crear.Nombre = nombre;
             crear.Descripcion = descripcion;
             crear.Horas = horas;
-            crear.Costo = costo;
+            crear.Costo = costos;
             crear.Estado = estado;
             crear.CategoriaID = categoria;
             crear.Creditos = creditos;

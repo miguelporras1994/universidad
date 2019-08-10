@@ -244,7 +244,8 @@ var BuscarCategoria = (id) => {
 
 var EditarCategoria = () => {
     var id = document.getElementById("CategoriaID1").value;
-    var nombre = document.getElementById("Nombre1").value;   var descripcion = document.getElementById("Descripcion1").value;
+    var nombre = document.getElementById("Nombre1").value;
+    var descripcion = document.getElementById("Descripcion1").value;
     var estados = document.getElementById('Estado1');
     var estado = estados.options[estados.selectedIndex].value;
     var action = 'Categorias/EditarCategoria';
