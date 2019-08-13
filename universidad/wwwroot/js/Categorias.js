@@ -120,7 +120,7 @@ class Categorias {
             url: action,
             data: { id },
             success: (response) => {
-                document.getElementById("CategoriaID1").value = response[0].categoriaID;
+                document.getElementById("Categoria2").value = response[0].caterogiaID;
                 document.getElementById("Nombre1").value =response[0].nombre;
                 document.getElementById("Descripcion1").value = response[0].descripcion;
                 document.getElementById("Estado1").value = response[0].estado;
