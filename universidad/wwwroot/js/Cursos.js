@@ -88,4 +88,28 @@
 
         $('#CrearCurso').modal('hide');
     }
+
+
+
+    BuscarCurso(numPagina, order) {
+        var valor = this.id;
+        var action = this.action;
+        if (valor == "") {
+            valor = "null";
+        }
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { valor, numPagina, order },
+            success: (response) => {
+                console.log(response);
+                $.each(response, (index, val) => {
+                    $("#MostrarCurso").html(val[0]);
+                    $("#paginador").html(val[1]);
+
+                });
+            }
+        });
+
+    }
 }

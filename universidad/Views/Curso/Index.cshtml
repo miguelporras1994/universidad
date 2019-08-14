@@ -17,6 +17,9 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.CursoID)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Nombre)
                 </th>
                 <th>
@@ -34,38 +37,13 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Categoria)
                 </th>
-                <th></th>
+                <th>
+                    Opciones
+                </th>
             </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Creditos)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Horas)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Costo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Estado)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Categoria.CaterogiaID)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.CursoID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.CursoID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.CursoID">Delete</a>
-                    </td>
-                </tr>
-            }
+        <tbody id="MostrarCurso">
+          
         </tbody>
     </table>
 

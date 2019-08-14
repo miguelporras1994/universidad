@@ -217,6 +217,7 @@ var filtrarDatos = (numPagina,order) => {
 $().ready(() => {
     document.getElementById("filtrar").focus();
     filtrarDatos(1, "nombre");
+    filtrarCurso(1,"id")
     ValidarCategoria();
 });
 
@@ -263,6 +264,14 @@ $('#CrearCurso').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
 
+
+var filtrarCurso  = (numPagina, order) => {
+    var valor = document.getElementById("filtrar").value;
+    var action = 'Curso/FiltrarCurso';
+    var envio = new Cursos(valor, "", "", "", action);
+    envio.BuscarCurso(numPagina, order);
+
+}
 
 var ValidarCategoria = () => {
     var action = 'Curso/ValidarCategoria';
