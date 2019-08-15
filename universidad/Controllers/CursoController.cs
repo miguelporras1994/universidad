@@ -114,13 +114,14 @@ namespace universidad.Controllers
             can_paginas = (numregistro / resgistropagina);
             if (valor == "null")
             {
-                Consulta = Curso.Skip(inicio).Take(resgistropagina);
+                Consulta = Curso.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
+                
 
             }
             else
             {
+                Consulta = Curso.Skip(inicio).Take(resgistropagina);
 
-                Consulta = Curso.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
             }
 
 
