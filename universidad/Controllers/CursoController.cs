@@ -114,14 +114,14 @@ namespace universidad.Controllers
             can_paginas = (numregistro / resgistropagina);
             if (valor == "null")
             {
-                Consulta = Curso.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
                 
+                Consulta = Curso.Skip(inicio).Take(resgistropagina);
 
             }
             else
             {
-                Consulta = Curso.Skip(inicio).Take(resgistropagina);
 
+                Consulta = Curso.Where(c => c.Nombre.StartsWith(valor) || c.Descripcion.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
             }
 
 
@@ -142,7 +142,11 @@ namespace universidad.Controllers
                     "<td>" + nuevo.CursoID + "</td>" +
                     "<td>" + nuevo.Nombre + "</td>" +
                       "<td>" + nuevo.Descripcion + "</td>" +
-                        "<td>" + Estado + "</td>" + "<td>" +
+                       "<td>" + nuevo.Creditos + "</td>" +
+                        "<td>" + nuevo.Horas + "</td>" +
+                        "<td>" + nuevo.Costo+ "</td>" +
+                          "<td>" + nuevo.CategoriaID + "</td>" +
+                         "<td>" + Estado + "</td>" + "<td>" +
 
 
                           "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria(" + nuevo.CursoID + ")'>Editar</a>";

@@ -92,7 +92,7 @@
 
 
     BuscarCurso(numPagina, order) {
-        var valor = this.id;
+        var valor = this.nombre;
         var action = this.action;
         if (valor == "") {
             valor = "null";

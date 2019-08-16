@@ -268,7 +268,7 @@ $('#CrearCurso').on('shown.bs.modal', function () {
 var filtrarCurso  = (numPagina, order) => {
     var valor = document.getElementById("filtrar").value;
     var action = 'Curso/FiltrarCurso';
-    var envio = new Cursos("","", "", "", "","","", action);
+    var envio = new Cursos(valor,"", "", "", "","","", action);
     envio.BuscarCurso(numPagina, order);
 
 }
