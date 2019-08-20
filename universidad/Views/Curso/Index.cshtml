@@ -13,113 +13,203 @@
         <input id="filtrar" name="filtrar" placeholder="Buscar" onKeyUp="" class="form-control" />
     </div>
 </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Id Curso
-                </th>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    Descripcion
-                </th>
-                <th>
-                    Creditos
-                </th>
-                <th>
-                    Horas
-                </th>
-                <th>
-                    Costo
-                </th>
-                <th>
-                  Categoria
-                </th>
-                <th>
-                   Estado
-                </th>
-                <th>
-                    Opciones
-                </th>
-            </tr>
-        </thead>
-        <tbody id="MostrarCurso">
-          
-        </tbody>
-    </table>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id Curso
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Descripcion
+            </th>
+            <th>
+                Creditos
+            </th>
+            <th>
+                Horas
+            </th>
+            <th>
+                Costo
+            </th>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Opciones
+            </th>
+        </tr>
+    </thead>
+    <tbody id="MostrarCurso"></tbody>
+</table>
 
 
-    <div class="modal fade" id="CrearCurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <center> <h4 class="modal-title" id="myModalLabel">Crear Curso</h4> </center>
-                </div>
-                <div class="modal-body">
-                    @*<form asp-action=" ">*@
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <label for="Nombre" class="col-md-2 control-label">Nombre</label>
-                                <div class="col-md-10">
-                                    <input for="Nombre" id="Nombre" placeholder="Nombre" name="Nombre" class="form-control" />
-                                </div>
-                            </div>
+<div class="modal fade" id="CrearCurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <center> <h4 class="modal-title" id="myModalLabel">Crear Curso</h4> </center>
+            </div>
+            <div class="modal-body">
+                <form asp-action=" ">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="Nombre" class="col-md-2 control-label">Nombre</label>
+                        <div class="col-md-10">
+                            <input for="Nombre" id="Nombre" placeholder="Nombre" name="Nombre" class="form-control" />
+                        </div>
+                    </div>
 
-                            <div class="form-group">
-                                <label for="Descripcion" class="col-md-2 control-label">Descripcion</label>
-                                <div class="col-md-10">
-                                    <input for="Descripcion" id="Descripcion" placeholder="Descripcion" name="Descripcion" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Creditos" class="col-md-2 control-label">Creditos</label>
-                                <div class="col-md-10">
-                                    <input for="Creditos" id="Creditos" placeholder="Creditos" name="Creditos" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Horas" class="col-md-2 control-label">Horas</label>
-                                <div class="col-md-10">
-                                    <input for="Horas" id="Horas" placeholder="Horas" name="Horas" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Costo" class="col-md-2 control-label">Costo</label>
-                                <div class="col-md-10">
-                                    <input for="osto" id="osto" placeholder="Costo" name="Costo" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Estado" class="col-md-2 control-label">Estado</label>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" for="Estado" id="Estado" name="Estado" />
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="Categoria" class="col-md-2 control-label">Categoria</label>
-                                <div class="col-md-10">
-                                    <select id='CategoriaCursos' class="form-control" ">
-                                        <option value='0'>Seleccione un curso</option>
+                    <div class="form-group">
+                        <label for="Descripcion" class="col-md-2 control-label">Descripcion</label>
+                        <div class="col-md-10">
+                            <input for="Descripcion" id="Descripcion" placeholder="Descripcion" name="Descripcion" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Creditos" class="col-md-2 control-label">Creditos</label>
+                        <div class="col-md-10">
+                            <input for="Creditos" id="Creditos" placeholder="Creditos" name="Creditos" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Horas" class="col-md-2 control-label">Horas</label>
+                        <div class="col-md-10">
+                            <input for="Horas" id="Horas" placeholder="Horas" name="Horas" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Costo" class="col-md-2 control-label">Costo</label>
+                        <div class="col-md-10">
+                            <input for="osto" id="osto" placeholder="Costo" name="Costo" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Estado" class="col-md-2 control-label">Estado</label>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" for="Estado" id="Estado" name="Estado" />
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Categoria" class="col-md-2 control-label">Categoria</label>
+                        <div class="col-md-10">
+                            <select id="CategoriaCursos" class="form-control" >
+                                <option value="0">Seleccione un curso</option>
 
-                                    </select>
-                                </div>
-
-                            </div>
+                            </select>
                         </div>
 
-                        <label id="mensaje" class="col-md-2 control-label"></label>
-                    @*</form>*@
+                    </div>
                 </div>
-               
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <button type="button" onclick="agregarCurso()" class="btn btn-primary">Guardar</button>
-                </div>
+
+                <label id="mensaje" class="col-md-2 control-label"></label>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" onclick="agregarCurso()" class="btn btn-primary">Guardar</button>
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="modal fade" id="EditarCurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Editar Curso</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="hidden" name="Cursoid" id="Cursoid1" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="Nombre" class="control-label">Nombre</label>
+                        <input name="Nombre" id="Nombre1" class="form-control" />
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="Descripcion" class="control-label">Descripcion</label>
+                        <input name="Descripcion" id="Descripcion1" class="form-control" />
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="Creditos" class="control-label">Creditos</label>
+                        <input name="Creditos" id="Creditos1" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="Horas" class="control-label">Horas</label>
+                        <input name="Horas" id="Horas1" class="form-control" />
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="Costo" class="control-label">Costo</label>
+                        <input name="Costo" id="Costo1" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Categoria" class="col-md-2 control-label">Categoria</label>
+                        <div class="col-md-10">
+                            <select id="CategoriaCursos1" class="form-control" >
+                                <option value="0">Seleccione un curso</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="Estado" class="control-label">Estado</label>
+                        <select id="Estado1" name="Estado" class="form-control">
+
+                            <option value="0">Seleciones el Estado</option>
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+
+                        </select>
+
+
+
+                    </div>
+
+
+                </form>
+
+
+</div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="EditarCurso()">Guardar datos</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

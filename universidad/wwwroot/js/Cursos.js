@@ -17,7 +17,7 @@
             url: action,
             data: {},
             success: (response) => {
-                console.log(response);
+                //console.log(response);
                 if (0 < response.length) {
                     for (var i = 0; i < response.length; i++) {
                         document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
@@ -91,7 +91,7 @@
 
 
 
-    BuscarCurso(numPagina, order) {
+    BuscarCursos(numPagina, order) {
         var valor = this.nombre;
         var action = this.action;
         if (valor == "") {
@@ -102,7 +102,7 @@
             url: action,
             data: { valor, numPagina, order },
             success: (response) => {
-                console.log(response);
+                //console.log(response);
                 $.each(response, (index, val) => {
                     $("#MostrarCurso").html(val[0]);
                     $("#paginador").html(val[1]);
@@ -112,4 +112,32 @@
         });
 
     }
+
+    BuscarCurso(id) {
+         var action = this.action;
+        $.ajax({
+            type : "POST",
+            url: action,
+            data: { id },
+            success: (response) => {
+                //console.log(response);
+                document.getElementById("Cursoid1").value = response.cursoID;
+                document.getElementById("Nombre1").value = response.nombre;
+                document.getElementById("Descripcion1").value = response.descripcion;
+                document.getElementById("Creditos1").value = response.creditos;
+                document.getElementById("Horas1").value = response.horas;
+                document.getElementById("Costo1").value = response.costo;
+                document.getElementById("CategoriaCursos1").value = response.categoriaID;
+                document.getElementById("Estado1").value = response.estado;
+
+            }
+
+
+
+
+        })
+    }
+    
+
+
 }

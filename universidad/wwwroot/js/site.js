@@ -269,7 +269,7 @@ var filtrarCurso  = (numPagina, order) => {
     var valor = document.getElementById("filtrar").value;
     var action = 'Curso/FiltrarCurso';
     var envio = new Cursos(valor,"", "", "", "","","", action);
-    envio.BuscarCurso(numPagina, order);
+    envio.BuscarCursos(numPagina, order);
 
 }
 
@@ -292,7 +292,11 @@ var agregarCurso = () => {
     curso.agregarCurso("", "");
 }
 
-
+var BuscarCurso = (id) => {
+    var action = 'Curso/BuscarCurso';
+    var Buscar = new Cursos(id, "", "", "", "", "", "", action);
+    Buscar.BuscarCurso(id)
+}
 
 
 

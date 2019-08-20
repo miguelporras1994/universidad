@@ -114,7 +114,7 @@ namespace universidad.Controllers
             can_paginas = (numregistro / resgistropagina);
             if (valor == "null")
             {
-                
+
                 Consulta = Curso.Skip(inicio).Take(resgistropagina);
 
             }
@@ -144,18 +144,32 @@ namespace universidad.Controllers
                       "<td>" + nuevo.Descripcion + "</td>" +
                        "<td>" + nuevo.Creditos + "</td>" +
                         "<td>" + nuevo.Horas + "</td>" +
-                        "<td>" + nuevo.Costo+ "</td>" +
+                        "<td>" + nuevo.Costo + "</td>" +
                           "<td>" + nuevo.CategoriaID + "</td>" +
                          "<td>" + Estado + "</td>" + "<td>" +
 
 
-                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCaterogia' onclick='BuscarCategoria(" + nuevo.CursoID + ")'>Editar</a>";
+                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCurso' onclick='BuscarCurso(" + nuevo.CursoID + ")'>Editar</a>";
 
             }
             object[] objecto = { Filtrador, paginador };
             data.Add(objecto);
             return data;
         }
+
+        public Curso BuscarCurso(int id)
+        {
+
+
+           var consulta = Db.Curso.Where(c => c.CursoID == id).FirstOrDefault();
+
+            return consulta;
+                
+                }
+      
     }
 }
+
+
+
 
