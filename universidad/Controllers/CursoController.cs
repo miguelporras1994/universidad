@@ -166,7 +166,18 @@ namespace universidad.Controllers
             return consulta;
                 
                 }
-      
+
+        public  string EditarCurso(int id, string nombre, string descripcion, int creditos, int horas, decimal costos, Boolean estado, int categoria)
+        {
+             var consulta = Db.Curso.Where(a => a.CursoID == id);
+
+            string Guardado = "save";
+            return Guardado;
+
+
+        }
+
+
     }
 }
 

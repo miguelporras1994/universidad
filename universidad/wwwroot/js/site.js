@@ -298,5 +298,22 @@ var BuscarCurso = (id) => {
     Buscar.BuscarCurso(id)
 }
 
+var EditarCurso = () => {
+    action = "Curso/EditarCurso"
+    cursoid = document.getElementById("Cursoid1").value;
+    nombre = document.getElementById("Nombre1").value;
+    descripcion = document.getElementById("Descripcion1").value;
+    creditos = document.getElementById("Creditos1").value;
+    horas = document.getElementById("Horas1").value;
+    costo = document.getElementById("Costo1").value;
+    estados = document.getElementById('Estado1');
+    estado = estados.options[estados.selectedIndex].value;
+    //categorias = document.getElementById('CategoriaCursos1');  
+    //categoria = categorias.options[categorias.selectedIndex].value;
+    var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, /*categoria*/" ", action);
+    curso.EditarCurso(cursoid);
+    
 
+
+};
 

@@ -127,7 +127,7 @@
                 document.getElementById("Creditos1").value = response.creditos;
                 document.getElementById("Horas1").value = response.horas;
                 document.getElementById("Costo1").value = response.costo;
-                document.getElementById("CategoriaCursos1").value = response.categoriaID;
+                document.getElementById("CategoriaCursos").value = response.categoriaID;
                 document.getElementById("Estado1").value = response.estado;
 
             }
@@ -139,5 +139,23 @@
     }
     
 
+    EditarCurso(id) {
+        var nombre = this.nombre;
+        var descripcion = this.descripcion;
+        var creditos = this.creditos;
+        var horas = this.horas;
+        var costos = this.costos;
+        var estado = this.estado;
+        var categoria = this.categoria;
+        var action = this.action;
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { id, nombre, descripcion, creditos, horas, costos, estado, categoria },
+            success: (response) => {
+                console.log(response)
+            }
+        })
 
+    }
 }
