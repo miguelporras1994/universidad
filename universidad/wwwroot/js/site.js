@@ -308,8 +308,8 @@ var EditarCurso = () => {
     costo = document.getElementById("Costo1").value;
     estados = document.getElementById('Estado1');
     estado = estados.options[estados.selectedIndex].value;
-    //categorias = document.getElementById('CategoriaCursos1');  
-    //categoria = categorias.options[categorias.selectedIndex].value;
+    categorias = document.getElementById('CategoriaCursos1');  
+    categoria = categorias.options[categorias.selectedIndex].value;
     var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, /*categoria*/" ", action);
     curso.EditarCurso(cursoid);
     

@@ -21,6 +21,10 @@
                 if (0 < response.length) {
                     for (var i = 0; i < response.length; i++) {
                         document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
+                        document.getElementById('CategoriaCursos1').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
+                        
+
+
                         count++;
                     }
                 }
@@ -154,8 +158,15 @@
             data: { id, nombre, descripcion, creditos, horas, costos, estado, categoria },
             success: (response) => {
                 console.log(response)
+                this.cerrar();
             }
         })
 
+    }
+
+    cerrar() {
+
+        $('#EditarCurso').modal('hide');
+        filtrarCurso ("","id");
     }
 }

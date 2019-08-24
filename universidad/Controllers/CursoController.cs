@@ -169,7 +169,17 @@ namespace universidad.Controllers
 
         public  string EditarCurso(int id, string nombre, string descripcion, int creditos, int horas, decimal costos, Boolean estado, int categoria)
         {
-             var consulta = Db.Curso.Where(a => a.CursoID == id);
+             var consulta = Db.Curso.Where(a => a.CursoID == id).FirstOrDefault();
+            consulta.Nombre = nombre;
+            consulta.Descripcion = descripcion;
+            consulta.Creditos = creditos;
+            consulta.Horas = horas;
+            consulta.Costo = costos;
+            consulta.Estado = estado;
+            //consulta.CategoriaID = categoria;
+
+            Db.Update(consulta);
+                Db.SaveChanges();
 
             string Guardado = "save";
             return Guardado;
