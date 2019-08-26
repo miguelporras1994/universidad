@@ -9,7 +9,7 @@
         this.categoria = categoria;
         this.action = action
     }
-    GetCategoria() {
+    GetCategoria(id , funcion) {
         var action = this.action;
         var count = 1;
         $.ajax({
@@ -18,14 +18,27 @@
             data: {},
             success: (response) => {
                 //console.log(response);
+                document.getElementById('CategoriaCursos').options[0] = new Option("Selecione un curso ", 0);
+                //document.getElementById('CategoriaCursos1').options[0] = new Option("Selecione un curso ", 0);
+                
                 if (0 < response.length) {
                     for (var i = 0; i < response.length; i++) {
-                        document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
-                        document.getElementById('CategoriaCursos1').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
-                        
+                        if (0 == funcion) {
+                            if (id == response[i].caterogiaID) {
+                                document.getElementById('CategoriaCursos1').options[0] = new Option(response[i].nombre, response[i].caterogiaID);
+                                break
 
+                            }
+                        }
+                    else {
+                        if (1 == funcion) {
+                            document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
 
-                        count++;
+                            document.getElementById('CategoriaCursos1').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
+                            count++;
+                        } 
+                        }
+                    
                     }
                 }
             }
@@ -131,7 +144,7 @@
                 document.getElementById("Creditos1").value = response.creditos;
                 document.getElementById("Horas1").value = response.horas;
                 document.getElementById("Costo1").value = response.costo;
-                document.getElementById("CategoriaCursos").value = response.categoriaID;
+                ValidarCategoria(response.categoriaID, 0);
                 document.getElementById("Estado1").value = response.estado;
 
             }

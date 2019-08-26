@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using universidad.Data;
 using universidad.Models;
 
@@ -128,6 +126,9 @@ namespace universidad.Controllers
             cant = Consulta.Count();
             foreach (var nuevo in Consulta)
             {
+                var categorias = Db.Categoria.Where(a => a.CaterogiaID == nuevo.CategoriaID).FirstOrDefault();
+               
+
                 if (nuevo.Estado == true)
                 {
                     Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CursoID + ")' class='btn btn-success'>Activo</a>";
@@ -145,7 +146,7 @@ namespace universidad.Controllers
                        "<td>" + nuevo.Creditos + "</td>" +
                         "<td>" + nuevo.Horas + "</td>" +
                         "<td>" + nuevo.Costo + "</td>" +
-                          "<td>" + nuevo.CategoriaID + "</td>" +
+                          "<td>" + categorias.Nombre + "</td>" +
                          "<td>" + Estado + "</td>" + "<td>" +
 
 
@@ -176,7 +177,7 @@ namespace universidad.Controllers
             consulta.Horas = horas;
             consulta.Costo = costos;
             consulta.Estado = estado;
-            //consulta.CategoriaID = categoria;
+            consulta.CategoriaID = categoria;
 
             Db.Update(consulta);
                 Db.SaveChanges();

@@ -1,5 +1,18 @@
 ﻿// Write your JavaScript code.
 //alert("hola site")
+
+
+$().ready(() => {
+    document.getElementById("filtrar").focus();
+    filtrarDatos(1, "nombre");
+
+
+    filtrarCurso(1, "id")
+    ValidarCategoria(0,1);
+});
+
+
+
 $('#ModalEditar').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
@@ -214,12 +227,6 @@ var filtrarDatos = (numPagina,order) => {
 
 }
 
-$().ready(() => {
-    document.getElementById("filtrar").focus();
-    filtrarDatos(1, "nombre");
-    filtrarCurso(1,"id")
-    ValidarCategoria();
-});
 
 
 var BuscarEstado = (id) => {
@@ -273,10 +280,10 @@ var filtrarCurso  = (numPagina, order) => {
 
 }
 
-var ValidarCategoria = () => {
+var ValidarCategoria = (id , funcion) => {
     var action = 'Curso/ValidarCategoria';
     var Curso = new Cursos("","","","","","","",action);
-    Curso.GetCategoria();
+    Curso.GetCategoria(id,funcion);
 }
 var agregarCurso = () => {
     var action = 'Curso/AgregarCurso';
@@ -310,7 +317,7 @@ var EditarCurso = () => {
     estado = estados.options[estados.selectedIndex].value;
     categorias = document.getElementById('CategoriaCursos1');  
     categoria = categorias.options[categorias.selectedIndex].value;
-    var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, /*categoria*/" ", action);
+    var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, categoria, action);
     curso.EditarCurso(cursoid);
     
 
