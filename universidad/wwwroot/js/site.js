@@ -3,12 +3,22 @@
 
 
 $().ready(() => {
+    var url = window.location;
+
+
+    
     document.getElementById("filtrar").focus();
+    switch (url.pathname) {
+        case"/Categorias":
     filtrarDatos(1, "nombre");
+            break;
 
+        case "/Curso":
 
-    filtrarCurso(1, "id")
-    ValidarCategoria(0,1);
+            filtrarCurso(1, "id")
+            ValidarCategoria(0, 0);
+            break;
+}
 });
 
 

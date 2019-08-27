@@ -18,25 +18,31 @@
             data: {},
             success: (response) => {
                 //console.log(response);
-                document.getElementById('CategoriaCursos').options[0] = new Option("Selecione un curso ", 0);
+                //document.getElementById('CategoriaCursos').options[0] = new Option("Selecione un curso ", 0);
                 //document.getElementById('CategoriaCursos1').options[0] = new Option("Selecione un curso ", 0);
                 
                 if (0 < response.length) {
+                    
                     for (var i = 0; i < response.length; i++) {
                         if (0 == funcion) {
-                            if (id == response[i].caterogiaID) {
-                                document.getElementById('CategoriaCursos1').options[0] = new Option(response[i].nombre, response[i].caterogiaID);
-                                break
-
-                            }
-                        }
-                    else {
-                        if (1 == funcion) {
+                           
                             document.getElementById('CategoriaCursos').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
-
+                            
                             document.getElementById('CategoriaCursos1').options[count] = new Option(response[i].nombre, response[i].caterogiaID);
                             count++;
-                        } 
+                        }
+
+                        else {
+                            if (1 == funcion) {
+
+
+                                if (id == response[i].caterogiaID) {
+                                    document.getElementById('CategoriaCursos1').options[0] = new Option(response[i].nombre, response[i].caterogiaID);
+                                    document.getElementById('CategoriaCursos1').selectedIndex = 0;
+                                    break
+                                }
+                            }
+                            
                         }
                     
                     }
@@ -144,7 +150,7 @@
                 document.getElementById("Creditos1").value = response.creditos;
                 document.getElementById("Horas1").value = response.horas;
                 document.getElementById("Costo1").value = response.costo;
-                ValidarCategoria(response.categoriaID, 0);
+                ValidarCategoria(response.categoriaID, 1);
                 document.getElementById("Estado1").value = response.estado;
 
             }
