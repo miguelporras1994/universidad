@@ -131,12 +131,12 @@ namespace universidad.Controllers
 
                 if (nuevo.Estado == true)
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CursoID + ")' class='btn btn-success'>Activo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#ModalEstadoCurso' onclick='BuscarEstadoCurso(" + nuevo.CursoID + ")' class='btn btn-success'>Activo</a>";
                 }
 
                 else
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModaEstado' onclick='BuscarEstado(" + nuevo.CursoID + ")' class='btn btn-danger'>Inactivo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#ModalEstadoCurso' onclick='BuscarEstadoCurso(" + nuevo.CursoID + ")' class='btn btn-danger'>Inactivo</a>";
                 }
 
                 Filtrador += "<tr>" +
@@ -188,6 +188,46 @@ namespace universidad.Controllers
 
         }
 
+
+        public List<Curso> BuscarEstadoCurso(int id)
+        { 
+            var consultar = Db.Curso.Where(c => c.CursoID == id).ToList();
+
+            return consultar;
+        }
+
+
+        public string EditarEstadocurso (int id)
+        {
+
+            string code = "";
+            var consultar = Db.Curso.Where(c => c.CursoID == id).FirstOrDefault();
+
+            if(consultar.Estado == true)
+            {
+                consultar.Estado = false;
+            }else
+            {
+                consultar.Estado = true;
+            }
+
+
+            try
+            {
+                Db.Update(consultar);
+                Db.SaveChanges();
+                code = "Save";
+              
+
+            }
+            catch (Exception ex)
+            {
+                code = "Error";
+            
+            }
+
+            return code;
+        }
 
     }
 }

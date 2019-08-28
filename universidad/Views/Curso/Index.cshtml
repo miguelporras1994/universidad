@@ -58,59 +58,59 @@
             </div>
             <div class="modal-body">
                 <form asp-action=" ">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label for="Nombre" class="col-md-2 control-label">Nombre</label>
-                        <div class="col-md-10">
-                            <input for="Nombre" id="Nombre" placeholder="Nombre" name="Nombre" class="form-control" />
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="Nombre" class="col-md-2 control-label">Nombre</label>
+                            <div class="col-md-10">
+                                <input for="Nombre" id="Nombre" placeholder="Nombre" name="Nombre" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Descripcion" class="col-md-2 control-label">Descripcion</label>
+                            <div class="col-md-10">
+                                <input for="Descripcion" id="Descripcion" placeholder="Descripcion" name="Descripcion" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Creditos" class="col-md-2 control-label">Creditos</label>
+                            <div class="col-md-10">
+                                <input for="Creditos" id="Creditos" placeholder="Creditos" name="Creditos" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Horas" class="col-md-2 control-label">Horas</label>
+                            <div class="col-md-10">
+                                <input for="Horas" id="Horas" placeholder="Horas" name="Horas" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Costo" class="col-md-2 control-label">Costo</label>
+                            <div class="col-md-10">
+                                <input for="osto" id="osto" placeholder="Costo" name="Costo" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Estado" class="col-md-2 control-label">Estado</label>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" for="Estado" id="Estado" name="Estado" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Categoria" class="col-md-2 control-label">Categoria</label>
+                            <div class="col-md-10">
+                                <select id="CategoriaCursos" class="form-control">
+                                    <option value="0">Seleccione un curso</option>
+
+                                </select>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="Descripcion" class="col-md-2 control-label">Descripcion</label>
-                        <div class="col-md-10">
-                            <input for="Descripcion" id="Descripcion" placeholder="Descripcion" name="Descripcion" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Creditos" class="col-md-2 control-label">Creditos</label>
-                        <div class="col-md-10">
-                            <input for="Creditos" id="Creditos" placeholder="Creditos" name="Creditos" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Horas" class="col-md-2 control-label">Horas</label>
-                        <div class="col-md-10">
-                            <input for="Horas" id="Horas" placeholder="Horas" name="Horas" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Costo" class="col-md-2 control-label">Costo</label>
-                        <div class="col-md-10">
-                            <input for="osto" id="osto" placeholder="Costo" name="Costo" class="form-control" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Estado" class="col-md-2 control-label">Estado</label>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" for="Estado" id="Estado" name="Estado" />
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Categoria" class="col-md-2 control-label">Categoria</label>
-                        <div class="col-md-10">
-                            <select id="CategoriaCursos" class="form-control" >
-                                <option value="0">Seleccione un curso</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                </div>
-
-                <label id="mensaje" class="col-md-2 control-label"></label>
+                    <label id="mensaje" class="col-md-2 control-label"></label>
                 </form>
             </div>
 
@@ -173,12 +173,12 @@
 
                     <div class="form-group">
                         <label for="Estado" class="control-label">Categoria</label>
-                            <select id="CategoriaCursos1" class="form-control"   >
-                                <option value="0">Seleccione un curso</option>
+                        <select id="CategoriaCursos1" class="form-control">
+                            <option value="0">Seleccione un curso</option>
 
-                            </select>
-                        </div>
-                    
+                        </select>
+                    </div>
+
 
 
 
@@ -201,8 +201,8 @@
                 </form>
 
 
-</div>
-            
+            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="EditarCurso()">Guardar datos</button>
@@ -212,3 +212,21 @@
     </div>
 
 </div>
+
+
+<div class="modal fade" id="ModalEstadoCurso" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="titleCurso" class="modal-title"></h4>
+            </div>
+            <input type="hidden" name="Cursoid" id="Cursoid2" />
+            <div class="modal-footer">
+                <center>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" onclick="EditarEstadocurso()" class="btn btn-primary">SI</button>
+                </center>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

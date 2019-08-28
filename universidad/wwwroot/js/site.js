@@ -334,3 +334,18 @@ var EditarCurso = () => {
 
 };
 
+var BuscarEstadoCurso = (id) => {
+    action = "Curso/BuscarEstadoCurso"
+    var curso = new Cursos("", "", "", "", "", "", "",action);
+    curso.BuscarEstadoCurso(id);
+
+
+};
+
+
+var EditarEstadocurso = () => {
+    id = document.getElementById("Cursoid2").value;
+    action = "Curso/EditarEstadocurso"
+    var curso = new Cursos("", "", "", "", "", "", "", action);
+    curso.EditarEstadocurso (id);
+}

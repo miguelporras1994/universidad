@@ -185,7 +185,53 @@
 
     cerrar() {
 
+        $('#ModalEstadoCurso').modal('hide');
         $('#EditarCurso').modal('hide');
         filtrarCurso ("","id");
     }
+
+    BuscarEstadoCurso(id) {
+        var action = this.action;
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { id },
+            success: (response) => {
+                console.log(response)
+                if (response[0].estado == true) {
+                    document.getElementById("titleCurso").innerHTML = "Esta seguro de  desactivar el curso " + response[0].nombre;
+                    document.getElementById("Cursoid2").value = response[0].cursoID;
+
+                } else {
+
+                    document.getElementById("titleCurso").innerHTML = "Esta seguro de  activar el el curso " + response[0].nombre;
+                    document.getElementById("Cursoid2").value = response[0].cursoID;
+
+                }
+            }
+           
+        
+        })
+
+    }
+    EditarEstadocurso(id) {
+        var action = this.action;
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: { id },
+            success: (response) => {
+                console.log(response)
+
+                if (response = "Save") {
+                    this.cerrar();
+                } else {
+
+                }
+
+            }
+
+        })
+    }
+
 }
