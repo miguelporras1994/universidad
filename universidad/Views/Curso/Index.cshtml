@@ -10,20 +10,28 @@
 </p>
 <div class="form-group">
     <div class="col-md-6">
-        <input id="filtrar" name="filtrar" placeholder="Buscar" onKeyUp="" class="form-control" />
+        <input id="filtrarCurso" name="filtrarCurso" placeholder="Buscar" onKeyUp="filtrarCurso(1,'nombre')" class="form-control" />
     </div>
 </div>
 <table class="table">
     <thead>
+        
         <tr>
             <th>
-                Id Curso
+                <center>
+
+                    <a href="#" onclick='filtrarCurso(1,"id")'>Id</a>
+                </center>
             </th>
             <th>
-                Nombre
+                <center>
+                    <a href="#" onclick='filtrarCurso(1,"nombre")'>Nombre</a>
+                </center>
             </th>
             <th>
-                Descripcion
+                <center>
+                    <a href="#" onclick='filtrarCurso(1,"des")'>Descripcion</a>
+                </center>
             </th>
             <th>
                 Creditos
@@ -35,10 +43,10 @@
                 Costo
             </th>
             <th>
-                Categoria
+                <a href="#" onclick='filtrarCurso(1,"cat")'>Categoria</a>
             </th>
             <th>
-                Estado
+                <a href="#" onclick='filtrarCurso(1,"estado")'>Estado</a>
             </th>
             <th>
                 Opciones
@@ -47,6 +55,9 @@
     </thead>
     <tbody id="MostrarCurso"></tbody>
 </table>
+
+<div id="paginadorCurso">
+</div>
 
 
 <div class="modal fade" id="CrearCurso" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

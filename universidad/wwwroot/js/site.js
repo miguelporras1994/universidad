@@ -6,15 +6,17 @@ $().ready(() => {
     var url = window.location;
 
 
-    
-    document.getElementById("filtrar").focus();
+;
+
     switch (url.pathname) {
-        case"/Categorias":
+        case "/Categorias":
+
+   //document.getElementById("filtrar").focus();
     filtrarDatos(1, "nombre");
             break;
 
         case "/Curso":
-
+            //document.getElementById("filtrarCurso").focus();
             filtrarCurso(1, "id")
             ValidarCategoria(0, 0);
             break;
@@ -282,8 +284,9 @@ $('#CrearCurso').on('shown.bs.modal', function () {
 })
 
 
+
 var filtrarCurso  = (numPagina, order) => {
-    var valor = document.getElementById("filtrar").value;
+    var valor = document.getElementById("filtrarCurso").value;
     var action = 'Curso/FiltrarCurso';
     var envio = new Cursos(valor,"", "", "", "","","", action);
     envio.BuscarCursos(numPagina, order);

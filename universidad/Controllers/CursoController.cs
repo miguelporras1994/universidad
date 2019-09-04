@@ -73,7 +73,7 @@ namespace universidad.Controllers
 
         public List<object[]> FiltrarCurso(int numPagina, string valor, string order)
         {
-            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 4;
+            int contador = 0, cant, numregistro = 0, inicio = 0, resgistropagina = 6;
             int can_paginas, pagina;
             string Filtrador = "", paginador = "", Estado = null;
             List<object[]> data = new List<object[]>();
@@ -99,13 +99,19 @@ namespace universidad.Controllers
 
 
                     break;
+                case "cat":
+
+                    Curso = Db.Curso.OrderBy(c => c.CategoriaID).ToList();
+
+
+                    break;
             }
 
 
             numregistro = Curso.Count;
             if ((numregistro % resgistropagina) > 0)
             {
-                numregistro += 3;
+                numregistro += 5;
             }
 
             inicio = (numPagina - 1) * resgistropagina;
@@ -153,7 +159,27 @@ namespace universidad.Controllers
                           "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarCurso' onclick='BuscarCurso(" + nuevo.CursoID + ")'>Editar</a>";
 
             }
-            object[] objecto = { Filtrador, paginador };
+
+            if (valor == "null")
+            {
+                if (numPagina > 1)
+                {
+                    pagina = numPagina - 1;
+                    paginador += "<a class='btn btn-default' onclick='filtrarCurso(" + 1 + ',' + '"' + order + '"' + ")'> << </a>" +
+                    "<a class='btn btn-default' onclick='filtrarCurso(" + pagina + ',' + '"' + order + '"' + ")'> < </a>";
+                }
+                if (1 < can_paginas)
+                {
+                    paginador += "<strong class='btn btn-success'>" + numPagina + ".de." + can_paginas + "</strong>";
+                }
+                if (numPagina < can_paginas)
+                {
+                    pagina = numPagina + 1;
+                    paginador += "<a class='btn btn-default' onclick='filtrarCurso(" + pagina + ',' + '"' + order + '"' + ")'>  > </a>" +
+                                 "<a class='btn btn-default' onclick='filtrarCurso(" + can_paginas + ',' + '"' + order + '"' + ")'> >> </a>";
+                }
+            }
+                object[] objecto = { Filtrador, paginador };
             data.Add(objecto);
             return data;
         }

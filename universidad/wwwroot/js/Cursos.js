@@ -110,6 +110,7 @@
         document.getElementById("mensaje").innerHTML = "";
 
         $('#CrearCurso').modal('hide');
+        filtrarCurso("", "id");
     }
 
 
@@ -128,7 +129,7 @@
                 //console.log(response);
                 $.each(response, (index, val) => {
                     $("#MostrarCurso").html(val[0]);
-                    $("#paginador").html(val[1]);
+                    $("#paginadorCurso").html(val[1]);
 
                 });
             }
