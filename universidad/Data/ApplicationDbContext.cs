@@ -28,5 +28,9 @@ namespace universidad.Data
         public DbSet <universidad.Models.ApplicationUser> ApplicationUser { get; set; }
         public DbSet<universidad.Models.Usuarios> Usuarios { get; set; }
         public DbSet<universidad.Models.Curso> Curso { get; set; }
+        public DbSet<universidad.Models.Estudiante> Estudiante { get; set; }
+        public DbSet<universidad.Models.Instructor> Instructor { get; set; }
+
+
     }
 }

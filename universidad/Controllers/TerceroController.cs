@@ -23,7 +23,9 @@ namespace universidad.Controllers
         // GET: Tercero
         public ActionResult Index()
         {
-            return View(Db.Tercero.ToList());
+            //return View(Db.Tercero.ToList());
+            return View();
+
         }
 
         // GET: Tercero/Details/5
