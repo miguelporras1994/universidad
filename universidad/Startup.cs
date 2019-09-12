@@ -61,7 +61,7 @@ namespace universidad
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Curso}/{action=Index}/{id?}");
+                    template: "{controller=ApplicationUser}/{action=Index}/{id?}");
             });
         }
     }

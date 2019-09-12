@@ -8,6 +8,10 @@
 
     <script src="~/js/Categorias.js"></script>
     <script src="~/js/Cursos.js"></script>
+    <script src="~/js/Estudiante.js"></script>
+    <script src="~/js/Instructor.js"></script>
+
+
     <title>@ViewData["Title"] - Universidad</title>
 
 
@@ -60,7 +64,8 @@
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Categorias" asp-action="Index">Categoria</a></li>
                     <li><a asp-area="" asp-controller="Curso" asp-action="Index">Curso</a></li>
-                    <li><a asp-area="" asp-controller="Tercero" asp-action="Index">Persona</a></li>
+                    <li><a asp-area="" asp-controller="Instructor" asp-action="Index">Instructor</a></li>
+                    <li><a asp-area="" asp-controller="Estudiante" asp-action="Index">Estudiante</a></li>
                     <li><a asp-area="" asp-controller="ApplicationUser" asp-action="Index">Usuario</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
@@ -71,7 +76,9 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - universidad</p>
+            <p>&copy; 2019 - universidad
+           <br /> Desarrollado por el ing Miguel Angel Porras
+            </p>
         </footer>
     </div>
 

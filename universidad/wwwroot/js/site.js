@@ -6,18 +6,18 @@ $().ready(() => {
     var url = window.location;
 
 
-;
+
 
     switch (url.pathname) {
         case "/Categorias":
 
-   //document.getElementById("filtrar").focus();
+    //document.getElementById("filtrar").focus();
     filtrarDatos(1, "nombre");
             break;
 
         case "/Curso":
             //document.getElementById("filtrarCurso").focus();
-            filtrarCurso(1, "id")
+            filtrarCurso (1, "id")
             ValidarCategoria(0, 0);
             break;
 }
