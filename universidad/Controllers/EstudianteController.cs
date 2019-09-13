@@ -138,7 +138,7 @@ namespace universidad.Controllers
 
                 else
                 {
-                    Estado = "<a data-toggle='modal' data-target='#ModalEstadoCurso' onclick='BuscarEstadoCurso(" + nuevo.TerceroID + ")' class='btn btn-danger'>Inactivo</a>";
+                    Estado = "<a data-toggle='modal' data-target='#CrearEstudiante' onclick='BuscarEstudiante(" + nuevo.TerceroID + ")' class='btn btn-danger'>Inactivo</a>";
                 }
 
                 Filtrador += "<tr>" +
@@ -156,7 +156,7 @@ namespace universidad.Controllers
 
 
 
-                          "   <a class='btn btn-success' data-toggle='modal' data-target='#EditarEstudiante' onclick='BuscarCurso(" + nuevo.TerceroID + ")'>Editar</a>";
+                          "   <a class='btn btn-success' data-toggle='modal' data-target='#CrearEstudiante' onclick='BuscarEstudiante(" + nuevo.TerceroID + ")'>Editar</a>";
 
             }
 

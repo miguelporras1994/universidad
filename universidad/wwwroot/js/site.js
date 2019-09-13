@@ -17,8 +17,12 @@ $().ready(() => {
 
         case "/Curso":
             //document.getElementById("filtrarCurso").focus();
-            filtrarCurso (1, "id")
+            filtrarCurso(1, "id");
             ValidarCategoria(0, 0);
+            break;
+
+        case "/Estudiante":
+            FiltrarEstudiante(1, "id");
             break;
 }
 });
@@ -351,4 +355,86 @@ var EditarEstadocurso = () => {
     action = "Curso/EditarEstadocurso"
     var curso = new Cursos("", "", "", "", "", "", "", action);
     curso.EditarEstadocurso (id);
+}
+
+
+
+
+
+//PROGRAMACION DE MODULO ESTUDIANTE :)
+
+
+
+$('#CrearEstudiante').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+
+
+var FiltrarEstudiante = (numPagina, order) => {
+    //var valor = document.getElementById("filtrarCurso").value;
+    var action = 'Estudiante/FiltrarEstudiante  ';
+    var envio = new Estudiante("", "", "", "", "", "", "", action);
+    envio.BuscarEstudiantes(numPagina, order);
+
+}
+
+var ValidarCategoria = (id, funcion) => {
+    var action = 'Curso/ValidarCategoria';
+    var Curso = new Cursos("", "", "", "", "", "", "", action);
+    Curso.GetCategoria(id, funcion);
+}
+var agregarCurso = () => {
+    var action = 'Curso/AgregarCurso';
+    var nombre = document.getElementById("Nombre").value;
+    var descripcion = document.getElementById("Descripcion").value;
+    var creditos = document.getElementById("Creditos").value;
+    var horas = document.getElementById("Horas").value;
+    var costo = document.getElementById("osto").value;
+    var estado = document.getElementById("Estado").checked
+    var categorias = document.getElementById('CategoriaCursos');
+    var categoria = categorias.options[categorias.selectedIndex].value;
+    var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, categoria, action);
+    curso.agregarCurso("", "");
+}
+
+var BuscarEstudiante = (id) => {
+    var action = 'Estudiante/BuscarEstudiante';
+    var Buscar = new Estudiante(id, "", "", "", "", "", "", action);
+    Buscar.BuscarEstudiante(id)
+}
+
+var EditarCurso = () => {
+    action = "Curso/EditarCurso"
+    cursoid = document.getElementById("Cursoid1").value;
+    nombre = document.getElementById("Nombre1").value;
+    descripcion = document.getElementById("Descripcion1").value;
+    creditos = document.getElementById("Creditos1").value;
+    horas = document.getElementById("Horas1").value;
+    costo = document.getElementById("Costo1").value;
+    estados = document.getElementById('Estado1');
+    estado = estados.options[estados.selectedIndex].value;
+    categorias = document.getElementById('CategoriaCursos1');
+    categoria = categorias.options[categorias.selectedIndex].value;
+    var curso = new Cursos(nombre, descripcion, creditos, horas, costo, estado, categoria, action);
+    curso.EditarCurso(cursoid);
+
+
+
+};
+
+var BuscarEstadoCurso = (id) => {
+    action = "Curso/BuscarEstadoCurso"
+    var curso = new Cursos("", "", "", "", "", "", "", action);
+    curso.BuscarEstadoCurso(id);
+
+
+};
+
+
+var EditarEstadocurso = () => {
+    id = document.getElementById("Cursoid2").value;
+    action = "Curso/EditarEstadocurso"
+    var curso = new Cursos("", "", "", "", "", "", "", action);
+    curso.EditarEstadocurso(id);
 }
