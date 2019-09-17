@@ -404,13 +404,14 @@ var BuscarEstudiante = (id) => {
     Buscar.BuscarEstudiante(id)
 }
 
-var EditarCurso = () => {
-    action = "Curso/EditarCurso"
-    cursoid = document.getElementById("Cursoid1").value;
-    nombre = document.getElementById("Nombre1").value;
-    descripcion = document.getElementById("Descripcion1").value;
-    creditos = document.getElementById("Creditos1").value;
-    horas = document.getElementById("Horas1").value;
+var EditarEstudiantes = () => {
+    action = "Estudiante/EditarEstudiante"
+    Cedula = document.getElementById("Nombre").value;
+    Nombre = document.getElementById("Nombre").value;
+    Apellido= document.getElementById("Apellido").value;
+    Correo = document.getElementById("Correo").value;
+    Telefono = document.getElementById("Telefono").value;
+    Direccion = document.getElementById("Direccion").value;
     costo = document.getElementById("Costo1").value;
     estados = document.getElementById('Estado1');
     estado = estados.options[estados.selectedIndex].value;
@@ -438,3 +439,5 @@ var EditarEstadocurso = () => {
     var curso = new Cursos("", "", "", "", "", "", "", action);
     curso.EditarEstadocurso(id);
 }
+
+// Estudiante
