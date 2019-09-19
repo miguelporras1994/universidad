@@ -1,12 +1,12 @@
 ﻿class Estudiante {
-    constructor(nombre, descripcion, creditos, horas, costos, estado, categoria, action) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.creditos = creditos;
-        this.horas = horas;
-        this.costos = costos;
-        this.estado = estado;
-        this.categoria = categoria;
+    constructor(Nombre, Apellido, Correo, Telefono, Direccion, Naciemiento, Estado, action) {
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Correo = Correo;
+        this.Telefono = Telefono;
+        this.Direccion = Direccion;
+        this.Estado = Estado;
+        this.Naciemiento = Naciemiento;
         this.action = action
     }
     GetCategoria(id, funcion) {
@@ -144,15 +144,16 @@
             url: action,
             data: { id },
             success: (response) => {
-                //console.log(response);
-                document.getElementById("Cursoid1").value = response.cursoID;
-                document.getElementById("Nombre1").value = response.nombre;
-                document.getElementById("Descripcion1").value = response.descripcion;
-                document.getElementById("Creditos1").value = response.creditos;
-                document.getElementById("Horas1").value = response.horas;
-                document.getElementById("Costo1").value = response.costo;
-                ValidarCategoria(response.categoriaID, 1);
-                document.getElementById("Estado1").value = response.estado;
+                console.log(response);
+                document.getElementById("Nombre").value = response.nombres;
+                document.getElementById("Apellido").value = response.apellido;
+                document.getElementById("Correo").value = response.email;
+                document.getElementById("Telefono").value = response.telefono;
+                document.getElementById("Direccion").value = response.direccion;
+                document.getElementById("Naciemiento").value = response.fechaNacimiento;
+                document.getElementById("Estado").value = response.estado;
+                //ValidarCategoria(response.categoriaID, 1);
+               
 
             }
 
@@ -163,19 +164,12 @@
     }
 
 
-    EditarCurso(id) {
-        var nombre = this.nombre;
-        var descripcion = this.descripcion;
-        var creditos = this.creditos;
-        var horas = this.horas;
-        var costos = this.costos;
-        var estado = this.estado;
-        var categoria = this.categoria;
-        var action = this.action;
+ EditarEstudiante () {
+    
         $.ajax({
             type: "POST",
             url: action,
-            data: { id, nombre, descripcion, creditos, horas, costos, estado, categoria },
+            data: { Nombre, Apellido, Correo, Telefono, Direccion, Naciemiento, Estado},
             success: (response) => {
                 console.log(response)
                 this.cerrar();

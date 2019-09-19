@@ -121,8 +121,8 @@ namespace universidad.Controllers
             }
             else
             {
-
-                Consulta = Estudiante.Where(c => c.Nombres.StartsWith(valor) || c.Apellido.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
+                Consulta = Estudiante.Skip(inicio).Take(resgistropagina);
+                //Consulta = Estudiante.Where(c => c.Nombres.StartsWith(valor) || c.Apellido.StartsWith(valor)).Skip(inicio).Take(resgistropagina);
             }
 
 
@@ -184,11 +184,11 @@ namespace universidad.Controllers
             return data;
         }
 
-        public Curso BuscarCurso(int id)
+        public Estudiante BuscarEstudiante(int id)
         {
 
 
-            var consulta = Db.Curso.Where(c => c.CursoID == id).FirstOrDefault();
+            var consulta = Db.Estudiante.Where(c => c.TerceroID == id).FirstOrDefault();
 
             return consulta;
 
