@@ -453,6 +453,7 @@ BuscarEstudiante = (id) => {
 var EditarEstudiante = () => {
 
     var action = 'Estudiante/EditarEstudiante';
+    var id = document.getElementById("IdEstudiante").value;
     var Nombre = document.getElementById("Nombre").value;
     var Apellido = document.getElementById("Apellido").value;
     var Correo = document.getElementById("Correo").value;
@@ -460,9 +461,9 @@ var EditarEstudiante = () => {
     var Direccion = document.getElementById("Direccion").value;
     var Naciemiento = document.getElementById("Nacimiento").value;
     var Estados = document.getElementById('Estado');
-    var Estado = categorias.options[Estados.selectedIndex].value;
-    var Estudio = new Estudiante(Nombre, Apellido, Correo, Telefono, Direccion, Naciemiento, Estado, action);
-    Estudio.EditarEstudiante("", "");
+    var Estado = Estados.options[Estados.selectedIndex].value;
+    var Estudio = new Estudiante(Nombre, Apellido, Correo, Telefono, Direccion, "", Estado, action);
+    Estudio.EditarEstudiante(id);
      }
 
     

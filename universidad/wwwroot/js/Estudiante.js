@@ -145,12 +145,13 @@
             data: { id },
             success: (response) => {
                 console.log(response);
+                document.getElementById("IdEstudiante").value = response.terceroID;
                 document.getElementById("Nombre").value = response.nombres;
                 document.getElementById("Apellido").value = response.apellido;
                 document.getElementById("Correo").value = response.email;
                 document.getElementById("Telefono").value = response.telefono;
                 document.getElementById("Direccion").value = response.direccion;
-                document.getElementById("Naciemiento").value = response.fechaNacimiento;
+                document.getElementById("Nacimiento").value = response.fechaNacimiento;
                 document.getElementById("Estado").value = response.estado;
                 //ValidarCategoria(response.categoriaID, 1);
                
@@ -164,12 +165,12 @@
     }
 
 
- EditarEstudiante () {
+ EditarEstudiante (id) {
     
         $.ajax({
             type: "POST",
             url: action,
-            data: { Nombre, Apellido, Correo, Telefono, Direccion, Naciemiento, Estado},
+            data: {id,Nombre,Apellido,Correo,Telefono,Direccion,Naciemiento,Estado},
             success: (response) => {
                 console.log(response)
                 this.cerrar();
