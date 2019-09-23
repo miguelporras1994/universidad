@@ -194,16 +194,16 @@ namespace universidad.Controllers
 
         }
 
-        public string EditarCurso(int id, string nombre, string descripcion, int creditos, int horas, decimal costos, Boolean estado, int categoria)
+        public string EditarEstudiante( int id,  string Nombre, string Apellido, string  Correo, string  Telefono,  string Direccion, DateTime Nacimiento, Boolean Estado)
         {
-            var consulta = Db.Curso.Where(a => a.CursoID == id).FirstOrDefault();
-            consulta.Nombre = nombre;
-            consulta.Descripcion = descripcion;
-            consulta.Creditos = creditos;
-            consulta.Horas = horas;
-            consulta.Costo = costos;
-            consulta.Estado = estado;
-            consulta.CategoriaID = categoria;
+            var consulta = Db.Estudiante.Where(a => a.TerceroID == id).FirstOrDefault();
+            consulta.Nombres = Nombre;
+            consulta.Apellido = Apellido;
+            consulta.Email = Correo;
+            consulta.Telefono = Telefono;
+            consulta.Direccion = Direccion;
+            consulta.Estado = Estado;
+            consulta.FechaNacimiento = Nacimiento;
 
             Db.Update(consulta);
             Db.SaveChanges();

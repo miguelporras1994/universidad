@@ -1,12 +1,12 @@
 ﻿class Estudiante {
-    constructor(Nombre, Apellido, Correo, Telefono, Direccion, Naciemiento, Estado, action) {
+    constructor(Nombre, Apellido, Correo, Telefono, Direccion, Nacimiento, Estado, action) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
         this.Correo = Correo;
         this.Telefono = Telefono;
         this.Direccion = Direccion;
         this.Estado = Estado;
-        this.Naciemiento = Naciemiento;
+        this.Naciemiento = Nacimiento;
         this.action = action
     }
     GetCategoria(id, funcion) {
@@ -165,12 +165,22 @@
     }
 
 
- EditarEstudiante (id) {
-    
+ EditarEstudiante(id) {
+     var Nombre =this.Nombre;
+     var Apellido = this.Apellido;
+     var Correo = this.Correo;
+     var Telefono = this.Telefono;
+     var Direccion = this.Direccion;
+     var Nacimiento = this.Naciemiento;
+     var Estado = this.Estado;
+   
+     
+     var action = this.action;
+
         $.ajax({
-            type: "POST",
+            type:"POST",
             url: action,
-            data: {id,Nombre,Apellido,Correo,Telefono,Direccion,Naciemiento,Estado},
+            data: { id, Nombre, Apellido, Correo, Telefono, Direccion,Nacimiento,Estado},
             success: (response) => {
                 console.log(response)
                 this.cerrar();
@@ -181,9 +191,9 @@
 
     cerrar() {
 
-        $('#ModalEstadoCurso').modal('hide');
-        $('#EditarCurso').modal('hide');
-        filtrarCurso("", "id");
+        $('#CrearEstudiante').modal('hide');
+        
+        FiltrarEstudiante(1, "id");
     }
 
     BuscarEstadoCurso(id) {
